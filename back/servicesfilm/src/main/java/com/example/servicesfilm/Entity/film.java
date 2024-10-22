@@ -14,9 +14,9 @@ public class film {
     private String title;
     private String description;
     private int releaseYear;
-    private String srcImage ;
-    private String srcTrailler ;
-    private String srcGeo ;
-
+    private String srcImage;
+    private String srcTrailler;
+    private String srcGeo;
+    private Category category;
 
 }
