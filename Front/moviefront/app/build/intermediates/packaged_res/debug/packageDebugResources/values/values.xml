@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="dark_blue">#252836</color>
+    <color name="main_color">#1F1D2B</color>
+    <color name="orange">#FF7427</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="yelow">#FFC107</color>
+    <dimen name="spacing">70dp</dimen>
+    <string name="app_name">moviefront</string>
+    <string name="explorer">Explorer</string>
+    <string name="explorerrr">Explorerrr</string>
+    <style name="Base.Theme.Moviefront" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        
+        
+        <item name="colorPrimaryDark">@color/main_color</item>
+    </style>
+    <style name="Theme.Moviefront" parent="Base.Theme.Moviefront"/>
+</resources>

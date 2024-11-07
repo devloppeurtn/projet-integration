@@ -1,0 +1,398 @@
+[
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-hdpi_btn_3.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-hdpi\\btn_3.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-hdpi_back.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-hdpi\\back.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable_orange_button_background.xml.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable\\orange_button_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\layout_activity_login.xml.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xxxhdpi_btn_1.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xxxhdpi\\btn_1.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-ldpi_btn_3.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-ldpi\\btn_3.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xxxhdpi_star.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xxxhdpi\\star.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable_active_dot.xml.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable\\active_dot.xml"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xhdpi_btn_2.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xhdpi\\btn_2.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-ldpi_search.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-ldpi\\search.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-ldpi_btn_2.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-ldpi\\btn_2.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xxhdpi_intro_pic.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xxhdpi\\intro_pic.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-mdpi_fav.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-mdpi\\fav.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable_image1.jpg.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable\\image1.jpg"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-hdpi_btn_2.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-hdpi\\btn_2.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable_image3.jpg.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable\\image3.jpg"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-mdpi_intro_pic.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-mdpi\\intro_pic.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-hdpi_intro_pic.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-hdpi\\intro_pic.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xhdpi_search.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xhdpi\\search.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-ldpi_microphone.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-ldpi\\microphone.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xhdpi_btn_1.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xhdpi\\btn_1.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xxhdpi_back.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xxhdpi\\back.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-hdpi_fav.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-hdpi\\fav.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xxxhdpi_btn_3.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xxxhdpi\\btn_3.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-mdpi_star.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-mdpi\\star.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-hdpi_search.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-hdpi\\search.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xhdpi_time.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xhdpi\\time.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xxxhdpi_intro_pic.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xxxhdpi\\intro_pic.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xhdpi_intro_pic.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xhdpi\\intro_pic.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-mdpi_btn_2.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-mdpi\\btn_2.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\layout_item_movie.xml.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\layout\\item_movie.xml"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\layout_activity_intro.xml.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\layout\\activity_intro.xml"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xxhdpi_time.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xxhdpi\\time.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable_image5.jpg.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable\\image5.jpg"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable_image2.jpg.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable\\image2.jpg"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xhdpi_fav.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xhdpi\\fav.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable_gradient_background.xml.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable\\gradient_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-ldpi_time.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-ldpi\\time.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable_image6.jpg.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable\\image6.jpg"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-mdpi_back.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-mdpi\\back.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xxhdpi_btn_3.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xxhdpi\\btn_3.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable_non_active_dot.xml.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable\\non_active_dot.xml"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\layout_image_item_layout.xml.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\layout\\image_item_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xxxhdpi_microphone.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xxxhdpi\\microphone.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xhdpi_btn_4.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xhdpi\\btn_4.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-mdpi_btn_3.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-mdpi\\btn_3.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xhdpi_microphone.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xhdpi\\microphone.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xxhdpi_btn_2.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xxhdpi\\btn_2.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-ldpi_intro_pic.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-ldpi\\intro_pic.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-hdpi_star.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-hdpi\\star.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xxxhdpi_btn_4.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xxxhdpi\\btn_4.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xxhdpi_fav.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xxhdpi\\fav.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xxhdpi_star.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xxhdpi\\star.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xxxhdpi_time.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xxxhdpi\\time.png"
+    },
+    {
+        "merged": "com.example.moviefront.app-debug-32:/layout_activity_main.xml.flat",
+        "source": "com.example.moviefront.app-main-34:/layout/activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable_edittext_background.xml.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable\\edittext_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xxxhdpi_search.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xxxhdpi\\search.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable_image4.jpg.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable\\image4.jpg"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xxhdpi_btn_1.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xxhdpi\\btn_1.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-ldpi_star.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-ldpi\\star.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-hdpi_time.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-hdpi\\time.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xxxhdpi_btn_2.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xxxhdpi\\btn_2.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xxxhdpi_fav.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xxxhdpi\\fav.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-ldpi_back.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-ldpi\\back.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xxxhdpi_back.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xxxhdpi\\back.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-hdpi_btn_4.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-hdpi\\btn_4.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-ldpi_btn_4.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-ldpi\\btn_4.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-ldpi_fav.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-ldpi\\fav.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-mdpi_search.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-mdpi\\search.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-mdpi_btn_4.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-mdpi\\btn_4.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-mdpi_microphone.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-mdpi\\microphone.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xhdpi_btn_3.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xhdpi\\btn_3.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-mdpi_btn_1.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-mdpi\\btn_1.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xhdpi_star.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xhdpi\\star.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-hdpi_btn_1.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-hdpi\\btn_1.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xxhdpi_btn_4.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xxhdpi\\btn_4.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xxhdpi_microphone.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xxhdpi\\microphone.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-ldpi_btn_1.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-ldpi\\btn_1.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xhdpi_back.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xhdpi\\back.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-hdpi_microphone.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-hdpi\\microphone.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-xxhdpi_search.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-xxhdpi\\search.png"
+    },
+    {
+        "merged": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-debug-32:\\drawable-mdpi_time.png.flat",
+        "source": "C:\\Users\\houss\\.gradle\\daemon\\8.7\\com.example.moviefront.app-main-34:\\drawable-mdpi\\time.png"
+    }
+]
