@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/textview_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Couleur de fond du TextView -->
+    <solid android:color="#326260D1" /> <!-- Fond avec couleur semi-transparente -->
+
+    <!-- Bordure autour du TextView -->
+    <stroke
+        android:width="2dp"
+        android:color="#FFFFFF" /> <!-- Couleur de la bordure, ici en blanc -->
+
+    <!-- Coins arrondis (facultatif) -->
+    <corners android:radius="4dp" />
+</shape>

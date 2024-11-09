@@ -84,7 +84,7 @@
                     android:textSize="17sp" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button"
+                    android:id="@+id/getstarted"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/orange_button_background"

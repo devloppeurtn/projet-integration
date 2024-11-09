@@ -15,9 +15,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.coding.imagesliderwithdotindicatorviewpager2.models.ImageItem
 import com.example.moviefront.Adapters.ImageAdapter
-import com.example.moviefront.Adapters.MovieAdapter
 import com.example.moviefront.Domian.SpacingItemDecoration
 import com.example.moviefront.R
+import com.example.moviefront.adapters.MovieAdapter
 import com.example.moviefront.models.Movie
 import java.util.UUID
 
