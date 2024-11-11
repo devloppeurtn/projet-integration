@@ -1,9 +1,7 @@
 package com.example.moviefront.models
 
-import kotlinx.serialization.Serializable
 
 
-@Serializable
 enum class Category(val id: Int, val displayName: String) {
     ACTION(28, "Action"),
     ADVENTURE(12, "Adventure"),

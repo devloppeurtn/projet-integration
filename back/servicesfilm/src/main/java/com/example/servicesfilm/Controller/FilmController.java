@@ -3,6 +3,7 @@ package com.example.servicesfilm.Controller;
 import com.example.servicesfilm.Entity.Category;
 import com.example.servicesfilm.Entity.film;
 import com.example.servicesfilm.Repository.FilmRepository;
+import com.example.servicesfilm.service.filmService;
 import com.example.servicesfilm.service.tmdbservices;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +14,11 @@ import java.util.List;
 @RequestMapping("/api/films")
 public class FilmController {
     private final tmdbservices tmdbServices;
-    private final FilmRepository movieRepository;
-    public FilmController(tmdbservices tmdbServices, FilmRepository movieRepository) {
+    private final filmService filmService;
+
+    public FilmController(tmdbservices tmdbServices, FilmRepository movieRepository, com.example.servicesfilm.service.filmService filmService) {
         this.tmdbServices = tmdbServices;
-        this.movieRepository = movieRepository;
+        this.filmService = filmService;
     }
 
     @GetMapping("/import-tmdb")
@@ -42,30 +44,17 @@ public class FilmController {
 
 
 
-    @PostMapping("/films")
-    public ResponseEntity<film> createFilm(@RequestBody film movie) {
-        // Sauvegarder le film avec sa catégorie
-        return ResponseEntity.ok(movieRepository.save(movie));
+
+
+    @GetMapping
+    public ResponseEntity<List<film>> getAllFilms() {
+        List<film> films = filmService.getAllFilms();
+        return ResponseEntity.ok(films);
     }
 
-    @GetMapping("/category/{category}")
-    public List<film> getFilmsByCategory(@PathVariable("category") Category category) {
-        return movieRepository.findByCategory(category);
-    }
-    @DeleteMapping("/films/{id}")
-    public ResponseEntity<Void> deleteFilm(@PathVariable("id") String id) {
-        movieRepository.deleteById(id);
-        return ResponseEntity.noContent().build();
-    }
+
+
    
-    @PutMapping("/films/{id}")
-    public ResponseEntity<film> editFilm(@PathVariable("id") String id, @RequestBody film updatedFilm) {
-        film movie = movieRepository.findById(id).orElseThrow();
-        movie.setTitle(updatedFilm.getTitle());
-        movie.setDescription(updatedFilm.getDescription());
-        movie.setReleaseYear(updatedFilm.getReleaseYear());
-        // Mettre à jour d'autres champs si nécessaire
-        return ResponseEntity.ok(movieRepository.save(movie));
-    }
+
 
 }

@@ -9,9 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import com.example.servicesfilm.Entity.film;
 import com.example.servicesfilm.Repository.FilmRepository;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class tmdbservices {
@@ -51,6 +49,42 @@ public class tmdbservices {
         return null; // Retourner null si aucun trailer n'est trouvé
     }
 
+    public Map<String, Object> getProductionCompanies(int movieId) {
+        RestTemplate restTemplate = new RestTemplate();
+        String url = "https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" + apiKey;
+
+        try {
+            ResponseEntity<Map> response = restTemplate.getForEntity(url, Map.class);
+            if (response.getStatusCode().is2xxSuccessful()) {
+                Map<String, Object> movieDetails = response.getBody();
+
+                // Récupérer les companies de production
+                List<Map<String, Object>> productionCompanies = (List<Map<String, Object>>) movieDetails.get("production_companies");
+                List<String> productionCompanyNames = new ArrayList<>();
+                List<String> productionCompanyLogos = new ArrayList<>();
+
+                // Parcours des entreprises de production et extraction des informations
+                for (Map<String, Object> company : productionCompanies) {
+                    productionCompanyNames.add((String) company.get("name"));
+                    String logoPath = (String) company.get("logo_path");
+                    // Ajouter l'URL complète pour le logo si le chemin existe
+                    productionCompanyLogos.add(logoPath != null ? "https://image.tmdb.org/t/p/w500" + logoPath : null);
+                }
+
+                // Créer un map avec les données récupérées
+                Map<String, Object> productionData = new HashMap<>();
+                productionData.put("names", productionCompanyNames);
+                productionData.put("logos", productionCompanyLogos);
+
+                return productionData; // Retourne un map avec les noms et logos
+            }
+        } catch (HttpClientErrorException e) {
+            // Gérer l'exception ici, par exemple en journalisant l'erreur
+            throw new RuntimeException("Erreur lors de la récupération des companies de production", e);
+        }
+        return null; // Retourner null si aucune donnée n'est trouvée
+    }
+
     public void importMovies() {
         String url = "https://api.themoviedb.org/3/movie/popular?api_key=" + apiKey;
         ResponseEntity<Map> response = restTemplate.getForEntity(url, Map.class);
@@ -81,6 +115,16 @@ public class tmdbservices {
                     // Prendre le premier genre (ou un autre traitement si vous voulez gérer plusieurs genres)
                     Category genre = mapGenreIdToCategory(genreIds.get(0));
                     movie.setCategory(genre);
+                }
+                movie.setVote_average((Double) movieData.get("vote_average"));  // Ajouter la note moyenne
+
+                Map<String, Object> productionData = getProductionCompanies(movieId);  // Appel à getProductionCompanies
+                if (productionData != null) {
+                    List<String> productionCompanyNames = (List<String>) productionData.get("names");
+                    List<String> productionCompanyLogos = (List<String>) productionData.get("logos");
+
+                    movie.setProductionCompanyNames(productionCompanyNames);
+                    movie.setProductionCompanyLogos(productionCompanyLogos);
                 }
 
                 // Sauvegarde dans MongoDB

@@ -5,6 +5,8 @@ import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.annotation.Id;
 
+import java.util.List;
+
 @Document(collection = "movies")  // Indique que cette classe représente un document MongoDB
 @Getter
 @Setter
@@ -18,5 +20,9 @@ public class film {
     private String srcTrailler;
     private String srcGeo;
     private Category category;
+    private double vote_average ;
+    private List<String> productionCompanyNames;
+    private List<String> productionCompanyLogos;
+
 
 }

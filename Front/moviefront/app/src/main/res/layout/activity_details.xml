@@ -28,7 +28,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/imageView6"
+                    android:id="@+id/imagedet"
                     android:layout_width="match_parent"
                     android:layout_height="400dp"
                     android:scaleType="centerCrop"
@@ -41,7 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="200dp"
                     android:background="@drawable/gradient_background"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                    app:layout_constraintBottom_toBottomOf="@+id/imagedet"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
@@ -85,13 +85,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="24dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                    app:layout_constraintBottom_toBottomOf="@+id/imagedet"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent">
 
                     <TextView
-                        android:id="@+id/textView9"
+                        android:id="@+id/vote_average"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="273dp"
@@ -114,7 +114,7 @@
                         android:text="142 min "
                         android:textColor="@color/white"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/textView9"
+                        app:layout_constraintStart_toEndOf="@+id/vote_average"
                         app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -126,7 +126,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
 
-                    app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+                    app:layout_constraintTop_toBottomOf="@+id/imagedet" />
 
                 <TextView
                     android:id="@+id/textView15"
@@ -141,7 +141,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/recategory" />
 
                 <TextView
-                    android:id="@+id/textView16"
+                    android:id="@+id/descdet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -160,11 +160,11 @@
                     android:text="Prodection Companies"
                     android:textColor="@color/yelow"
                     android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="@+id/textView16"
-                    app:layout_constraintTop_toBottomOf="@+id/textView16" />
+                    app:layout_constraintStart_toStartOf="@+id/descdet"
+                    app:layout_constraintTop_toBottomOf="@+id/descdet" />
 
                 <TextView
-                    android:id="@+id/textView23"
+                    android:id="@+id/namecompanies"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -178,11 +178,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/textView23"
-                    app:layout_constraintTop_toBottomOf="@+id/textView23" />
+                    app:layout_constraintStart_toStartOf="@+id/namecompanies"
+                    app:layout_constraintTop_toBottomOf="@+id/namecompanies" />
 
                 <TextView
-                    android:id="@+id/textView13"
+                    android:id="@+id/titledet"
                     android:layout_width="379dp"
                     android:layout_height="27dp"
                     android:layout_marginBottom="16dp"

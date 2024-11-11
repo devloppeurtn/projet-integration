@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.moviefront.R
 
-class CompaniesImageAdapter(private val imageUrls: List<Int>) : RecyclerView.Adapter<CompaniesImageAdapter.ImageViewHolder>() {
+class CompaniesImageAdapter(private val imageUrls: List<String>) : RecyclerView.Adapter<CompaniesImageAdapter.ImageViewHolder>() {
 
     // ViewHolder pour chaque image
     inner class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -24,7 +24,7 @@ class CompaniesImageAdapter(private val imageUrls: List<Int>) : RecyclerView.Ada
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
         val imageUrl = imageUrls[position]
 
-        // Utilise Glide pour charger l'image en cercle
+        // Utiliser Glide pour charger l'image (logo de la société de production)
         Glide.with(holder.itemView.context)
             .load(imageUrl)
             .circleCrop() // Transforme l'image en cercle

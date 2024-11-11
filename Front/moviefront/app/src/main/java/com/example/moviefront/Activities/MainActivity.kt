@@ -1,14 +1,21 @@
 package com.example.moviefront.Activities
-
+import Movie
+import androidx.lifecycle.lifecycleScope // Si dans un fragment, remplacer par viewLifecycleOwner.lifecycleScope
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -17,8 +24,10 @@ import com.coding.imagesliderwithdotindicatorviewpager2.models.ImageItem
 import com.example.moviefront.Adapters.ImageAdapter
 import com.example.moviefront.Domian.SpacingItemDecoration
 import com.example.moviefront.R
-import com.example.moviefront.adapters.MovieAdapter
-import com.example.moviefront.models.Movie
+import com.example.moviefront.Adapters.MovieAdapter
+
+
+import getMovies
 import java.util.UUID
 
 class MainActivity : AppCompatActivity() {
@@ -113,38 +122,54 @@ class MainActivity : AppCompatActivity() {
         loadMovies()
     }
 
+
+
     private fun loadMovies() {
-        // Simule un délai de chargement (ici, 2 secondes)
-        handler.postDelayed({
-            // Configuration de la liste des films
-            val movieList = listOf(
-                Movie("1", "Film 1", "Description du Film 1", R.drawable.image1),
-                Movie("2", "Film 2", "Description du Film 2", R.drawable.image2),
-                Movie("3", "Film 3", "Description du Film 3", R.drawable.image3),
-                Movie("4", "Film 4", "Description du Film 4", R.drawable.image4)
-                // Ajoutez d'autres films si nécessaire
-            )
+        // Affiche la ProgressBar au début du chargement
+        progressBar.visibility = View.VISIBLE
+        progressBar2.visibility = View.VISIBLE
+        progressBar3.visibility = View.VISIBLE
 
-            val recyclerView = findViewById<RecyclerView>(R.id.view1)
-            recyclerView.adapter = MovieAdapter(movieList)
-            recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        // Lance une coroutine sur le Dispatcher IO pour effectuer la récupération des films
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                // Appel de la fonction suspendue pour récupérer les films
+                Log.d("LoadMovies", "Avant l'appel à getMovies()")
+                val movies = getMovies()
+                Log.d("LoadMovies", "Après l'appel à getMovies()")
+                withContext(Dispatchers.Main) {
+                    val movieAdapter = MovieAdapter(movies)
+                    // Configuration des RecyclerViews
+                    val recyclerView = findViewById<RecyclerView>(R.id.view1)
+                    recyclerView.adapter = movieAdapter
+                    recyclerView.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
 
+                    val recyclerView3 = findViewById<RecyclerView>(R.id.view3)
+                    recyclerView3.adapter = movieAdapter
+                    recyclerView3.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
 
-            val recyclerView3 = findViewById<RecyclerView>(R.id.view3)
-            recyclerView3.adapter = MovieAdapter(movieList)
-            recyclerView3.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+                    val recyclerView4 = findViewById<RecyclerView>(R.id.view4)
+                    recyclerView4.adapter = movieAdapter
+                    recyclerView4.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
 
-            val recyclerView4 = findViewById<RecyclerView>(R.id.view4)
-            recyclerView4.adapter = MovieAdapter(movieList)
-            recyclerView4.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-
-            // Masquer la ProgressBar une fois le chargement terminé
-            progressBar.visibility = View.GONE
-            progressBar2.visibility = View.GONE
-            progressBar3.visibility = View.GONE
-
-        }, 2000) // Délai de simulation de chargement
+                    // Masquer la ProgressBar après le chargement des films
+                    progressBar.visibility = View.GONE
+                    progressBar2.visibility = View.GONE
+                    progressBar3.visibility = View.GONE
+                }
+            } catch (e: Exception) {
+                // Gérer les erreurs éventuelles lors de la récupération des films
+                withContext(Dispatchers.Main) {
+                    // Masquer les ProgressBars et afficher un message d'erreur
+                    progressBar.visibility = View.GONE
+                    progressBar2.visibility = View.GONE
+                    progressBar3.visibility = View.GONE
+                    Toast.makeText(this@MainActivity, "Erreur de chargement des films", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
+
 
     override fun onResume() {
         super.onResume()
