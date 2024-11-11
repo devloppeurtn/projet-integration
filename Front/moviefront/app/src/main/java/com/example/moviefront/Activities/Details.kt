@@ -108,7 +108,7 @@ class Details : AppCompatActivity() {
         recyclerView.adapter = wordAdapter
 
 
-   
+
 
         recyclerView2 = findViewById(R.id.RecyclerView2)
         recyclerView2.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
