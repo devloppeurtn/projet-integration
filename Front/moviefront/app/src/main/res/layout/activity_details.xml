@@ -33,9 +33,30 @@
                     android:layout_height="400dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/image6"
+                    android:visibility="visible"
                     tools:layout_editor_absoluteX="-16dp"
-                    tools:layout_editor_absoluteY="16dp" />
+                    tools:layout_editor_absoluteY="16dp"
+                    tools:visibility="visible" />
 
+                <ImageView
+                    android:id="@+id/playvd"
+                    android:layout_width="142dp"
+                    android:layout_height="113dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imagedet"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintStart_toStartOf="@+id/imagedet"
+                    app:layout_constraintTop_toTopOf="@+id/imagedet"
+                    app:layout_constraintVertical_bias="0.445"
+                    app:srcCompat="@android:drawable/ic_media_play" />
+
+                <WebView
+                    android:id="@+id/webView"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:visibility="gone"
+
+                    tools:ignore="MissingConstraints" />
                 <View
                     android:id="@+id/view"
                     android:layout_width="wrap_content"
@@ -202,6 +223,7 @@
                     android:visibility="gone"
                     tools:layout_editor_absoluteX="144dp"
                     tools:layout_editor_absoluteY="515dp" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

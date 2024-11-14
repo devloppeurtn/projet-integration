@@ -42,8 +42,6 @@ class MovieAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<Movie
                 intent.putExtra("category", movie.category.displayName)
                 intent.putStringArrayListExtra("productionCompanyNames", ArrayList(movie.productionCompanyNames)) // Passer la liste des noms des entreprises
                 intent.putStringArrayListExtra("productionCompanyLogos", ArrayList(movie.productionCompanyLogos)) // Passer la liste des logos
-
-
                 intent.putExtra("vote_average", movie.vote_average)
 
                 context.startActivity(intent)
