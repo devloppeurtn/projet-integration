@@ -86,49 +86,48 @@ public class tmdbservices {
     }
 
     public void importMovies() {
-        String url = "https://api.themoviedb.org/3/movie/popular?api_key=" + apiKey;
-        ResponseEntity<Map> response = restTemplate.getForEntity(url, Map.class);
+        int totalPages = 10; // Exemple pour récupérer 5 pages de films
+        for (int page = 1; page <= totalPages; page++) {
+            String url = "https://api.themoviedb.org/3/discover/movie?api_key=" + apiKey + "&language=en-US&sort_by=popularity.desc&page=" + page;
+            ResponseEntity<Map> response = restTemplate.getForEntity(url, Map.class);
 
-        if (response.getStatusCode().is2xxSuccessful()) {
-            List<Map<String, Object>> movies = (List<Map<String, Object>>) response.getBody().get("results");
+            if (response.getStatusCode().is2xxSuccessful()) {
+                List<Map<String, Object>> movies = (List<Map<String, Object>>) response.getBody().get("results");
 
-            for (Map<String, Object> movieData : movies) {
-                film movie = new film();
-                movie.setId((Integer) movieData.get("id")); // Utiliser Integer pour récupérer l'ID
-                movie.setTitle((String) movieData.get("title"));
-                movie.setDescription((String) movieData.get("overview"));
-                int movieId = (Integer) movieData.get("id");
-                String trailerUrl = getTrailerUrl(movieId);
-                movie.setSrcTrailler(trailerUrl);
+                for (Map<String, Object> movieData : movies) {
+                    film movie = new film();
+                    movie.setId((Integer) movieData.get("id"));
+                    movie.setTitle((String) movieData.get("title"));
+                    movie.setDescription((String) movieData.get("overview"));
+                    int movieId = (Integer) movieData.get("id");
+                    String trailerUrl = getTrailerUrl(movieId);
+                    movie.setSrcTrailler(trailerUrl);
 
-                // Conversion de la date de sortie au format entier (année)
-                String releaseDate = (String) movieData.get("release_date");
-                if (releaseDate != null && releaseDate.length() >= 4) {
-                    movie.setReleaseYear(Integer.parseInt(releaseDate.substring(0, 4))); // Extraire l'année
+                    String releaseDate = (String) movieData.get("release_date");
+                    if (releaseDate != null && releaseDate.length() >= 4) {
+                        movie.setReleaseYear(Integer.parseInt(releaseDate.substring(0, 4)));
+                    }
+
+                    movie.setSrcImage("https://image.tmdb.org/t/p/w500" + movieData.get("backdrop_path"));
+
+                    List<Integer> genreIds = (List<Integer>) movieData.get("genre_ids");
+                    if (genreIds != null && !genreIds.isEmpty()) {
+                        Category genre = mapGenreIdToCategory(genreIds.get(0));
+                        movie.setCategory(genre);
+                    }
+                    movie.setVote_average((Double) movieData.get("vote_average"));
+
+                    Map<String, Object> productionData = getProductionCompanies(movieId);
+                    if (productionData != null) {
+                        List<String> productionCompanyNames = (List<String>) productionData.get("names");
+                        List<String> productionCompanyLogos = (List<String>) productionData.get("logos");
+
+                        movie.setProductionCompanyNames(productionCompanyNames);
+                        movie.setProductionCompanyLogos(productionCompanyLogos);
+                    }
+
+                    movieRepository.save(movie);
                 }
-
-                movie.setSrcImage("https://image.tmdb.org/t/p/w500" + movieData.get("backdrop_path")); // Assurez-vous que le chemin est complet
-
-                // Extraire les genres à partir de "genre_ids" et les mapper à Category
-                List<Integer> genreIds = (List<Integer>) movieData.get("genre_ids");
-                if (genreIds != null && !genreIds.isEmpty()) {
-                    // Prendre le premier genre (ou un autre traitement si vous voulez gérer plusieurs genres)
-                    Category genre = mapGenreIdToCategory(genreIds.get(0));
-                    movie.setCategory(genre);
-                }
-                movie.setVote_average((Double) movieData.get("vote_average"));  // Ajouter la note moyenne
-
-                Map<String, Object> productionData = getProductionCompanies(movieId);  // Appel à getProductionCompanies
-                if (productionData != null) {
-                    List<String> productionCompanyNames = (List<String>) productionData.get("names");
-                    List<String> productionCompanyLogos = (List<String>) productionData.get("logos");
-
-                    movie.setProductionCompanyNames(productionCompanyNames);
-                    movie.setProductionCompanyLogos(productionCompanyLogos);
-                }
-
-                // Sauvegarde dans MongoDB
-                movieRepository.save(movie);
             }
         }
     }

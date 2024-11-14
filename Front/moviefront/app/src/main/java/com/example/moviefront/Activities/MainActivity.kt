@@ -1,6 +1,4 @@
 package com.example.moviefront.Activities
-import Movie
-import androidx.lifecycle.lifecycleScope // Si dans un fragment, remplacer par viewLifecycleOwner.lifecycleScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -17,14 +15,13 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.coding.imagesliderwithdotindicatorviewpager2.models.ImageItem
 import com.example.moviefront.Adapters.ImageAdapter
-import com.example.moviefront.Domian.SpacingItemDecoration
 import com.example.moviefront.R
 import com.example.moviefront.Adapters.MovieAdapter
+import com.example.moviefront.models.Category
 
 
 import getMovies
@@ -36,7 +33,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var imageList: ArrayList<ImageItem>
     private lateinit var progressBar: ProgressBar
     private lateinit var progressBar2: ProgressBar  // Déclaration de la ProgressBar
-    private lateinit var progressBar3: ProgressBar  // Déclaration de la ProgressBar
+    private lateinit var progressBar3: ProgressBar
+    private lateinit var progressBar4: ProgressBar
+    private lateinit var progressBar5: ProgressBar
+    private lateinit var progressBar6: ProgressBar
+    private lateinit var progressBar7: ProgressBar
+    // Déclaration de la ProgressBar
     // Déclaration de la ProgressBar
     private val handler = Handler(Looper.getMainLooper())
     private val slideInterval = 3000L // Intervalle de 3 secondes pour auto-défilement
@@ -58,18 +60,30 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Initialisation de la ProgressBar
-        progressBar = findViewById(R.id.progressBar1)
-        progressBar2 = findViewById(R.id.progressBar2)
-        progressBar3 = findViewById(R.id.progressBar3)
+        progressBar = findViewById(R.id.pg1)
+        progressBar2 = findViewById(R.id.pg2)
+        progressBar3 = findViewById(R.id.pg3)
+        progressBar4 = findViewById(R.id.pg4)
+        progressBar5 = findViewById(R.id.pg5)
+        progressBar6 = findViewById(R.id.pg6)
+        progressBar7 = findViewById(R.id.pg7)
+
+
 
         // Afficher la ProgressBar avant de charger les données
         progressBar.visibility = View.VISIBLE
         progressBar2.visibility = View.VISIBLE
         progressBar3.visibility = View.VISIBLE
+        progressBar4.visibility = View.VISIBLE
+        progressBar5.visibility = View.VISIBLE
+        progressBar6.visibility = View.VISIBLE
+        progressBar7.visibility = View.VISIBLE
 
 
 
-                // Configuration du ViewPager2
+
+
+        // Configuration du ViewPager2
         viewpager2 = findViewById(R.id.viewpager2)
         imageList = arrayListOf(
             ImageItem(UUID.randomUUID().toString(), R.drawable.image1),
@@ -129,6 +143,12 @@ class MainActivity : AppCompatActivity() {
         progressBar.visibility = View.VISIBLE
         progressBar2.visibility = View.VISIBLE
         progressBar3.visibility = View.VISIBLE
+        progressBar4.visibility = View.VISIBLE
+        progressBar5.visibility = View.VISIBLE
+        progressBar6.visibility = View.VISIBLE
+        progressBar7.visibility = View.VISIBLE
+
+
 
         // Lance une coroutine sur le Dispatcher IO pour effectuer la récupération des films
         CoroutineScope(Dispatchers.IO).launch {
@@ -137,25 +157,66 @@ class MainActivity : AppCompatActivity() {
                 Log.d("LoadMovies", "Avant l'appel à getMovies()")
                 val movies = getMovies()
                 Log.d("LoadMovies", "Après l'appel à getMovies()")
-                withContext(Dispatchers.Main) {
-                    val movieAdapter = MovieAdapter(movies)
-                    // Configuration des RecyclerViews
-                    val recyclerView = findViewById<RecyclerView>(R.id.view1)
-                    recyclerView.adapter = movieAdapter
-                    recyclerView.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
 
-                    val recyclerView3 = findViewById<RecyclerView>(R.id.view3)
-                    recyclerView3.adapter = movieAdapter
+
+                val actionMovies = movies.filter { it.category == Category.ACTION }
+                val comedyMovies = movies.filter { it.category == Category.COMEDY }
+                val dramaMovies = movies.filter { it.category== Category.DRAMA }
+                val horrorMovies = movies.filter { it.category == Category.HORROR }
+                val thrillerMovies = movies.filter { it.category == Category.THRILLER }
+                val romanceMovies = movies.filter { it.category == Category.ROMANCE }
+                val documentaryMovies = movies.filter { it.category == Category.DOCUMENTARY }
+
+
+                withContext(Dispatchers.Main) {
+                    val actionAdapter = MovieAdapter(actionMovies)
+                    val recyclerView1 = findViewById<RecyclerView>(R.id.action)
+                    recyclerView1.adapter = actionAdapter
+                    recyclerView1.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+
+                    // Adapter pour les films de comédie
+                    val comedyAdapter = MovieAdapter(comedyMovies)
+                    val recyclerView2 = findViewById<RecyclerView>(R.id.comedy)
+                    recyclerView2.adapter = comedyAdapter
+                    recyclerView2.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+
+                    // Adapter pour les films dramatiques
+                    val dramaAdapter = MovieAdapter(dramaMovies)
+                    val recyclerView3 = findViewById<RecyclerView>(R.id.drama)
+                    recyclerView3.adapter = dramaAdapter
                     recyclerView3.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
 
-                    val recyclerView4 = findViewById<RecyclerView>(R.id.view4)
-                    recyclerView4.adapter = movieAdapter
+                    // Adapter pour les films d'horreur
+                    val horrorAdapter = MovieAdapter(horrorMovies)
+                    val recyclerView4 = findViewById<RecyclerView>(R.id.horror)
+                    recyclerView4.adapter = horrorAdapter
                     recyclerView4.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
 
+                    // Adapter pour les films de thriller
+                    val thrillerAdapter = MovieAdapter(thrillerMovies)
+                    val recyclerView5 = findViewById<RecyclerView>(R.id.thriller)
+                    recyclerView5.adapter = thrillerAdapter
+                    recyclerView5.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+
+                    // Adapter pour les films de romance
+                    val romanceAdapter = MovieAdapter(romanceMovies)
+                    val recyclerView6 = findViewById<RecyclerView>(R.id.romance)
+                    recyclerView6.adapter = romanceAdapter
+                    recyclerView6.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+
+                    // Adapter pour les films documentaires
+                    val documentaryAdapter = MovieAdapter(documentaryMovies)
+                    val recyclerView7 = findViewById<RecyclerView>(R.id.documentary)
+                    recyclerView7.adapter = documentaryAdapter
+                    recyclerView7.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
                     // Masquer la ProgressBar après le chargement des films
                     progressBar.visibility = View.GONE
                     progressBar2.visibility = View.GONE
                     progressBar3.visibility = View.GONE
+                    progressBar4.visibility = View.GONE
+                    progressBar5.visibility = View.GONE
+                    progressBar6.visibility = View.GONE
+                    progressBar7.visibility = View.GONE
                 }
             } catch (e: Exception) {
                 // Gérer les erreurs éventuelles lors de la récupération des films
@@ -164,6 +225,12 @@ class MainActivity : AppCompatActivity() {
                     progressBar.visibility = View.GONE
                     progressBar2.visibility = View.GONE
                     progressBar3.visibility = View.GONE
+                    progressBar4.visibility = View.GONE
+                    progressBar5.visibility = View.GONE
+                    progressBar6.visibility = View.GONE
+                    progressBar7.visibility = View.GONE
+
+
                     Toast.makeText(this@MainActivity, "Erreur de chargement des films", Toast.LENGTH_SHORT).show()
                 }
             }
