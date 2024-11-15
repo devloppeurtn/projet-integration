@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="resetPasswordButton" type="id" />
+    <item name="nameEditText" type="id" />
+    <item name="registerButton" type="id" />
+    <item name="getstarted" type="id" />
+    <item name="textView7" type="id" />
+    <item name="textView5" type="id" />
+</resources>

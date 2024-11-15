@@ -42,7 +42,7 @@ val client = HttpClient(CIO) {
 // Remplacez Json.decodeFromString par une instance locale
 suspend fun getMovies(): List<Movie> {
     return try {
-        val response = client.get("http://10.0.2.2:8081/api/films")
+        val response = client.get("http://10.0.2.2:8091/api/films")
         val responseBody = response.bodyAsText() // Obtenez la réponse en texte brut
         Log.d("LoadMovies", "Réponse brute du serveur : $responseBody")
 
