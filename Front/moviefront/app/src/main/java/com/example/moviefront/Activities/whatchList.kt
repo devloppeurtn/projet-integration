@@ -1,21 +1,73 @@
 package com.example.moviefront.Activities
 
+import Movie
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.moviefront.Adapters.FavoriteApadter
 import com.example.moviefront.R
+import com.example.moviefront.objecte.RetrofitInstance
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class whatchList : AppCompatActivity() {
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var moviesAdapter: FavoriteApadter
+    private val moviesList = mutableListOf<Movie>()
+    private lateinit var userEmail: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_whatch_list)
+
+        // Gestion des barres système
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        recyclerView = findViewById(R.id.recfav)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        // Récupérer l'email de l'utilisateur connecté
+        userEmail = intent.getStringExtra("USER_EMAIL") ?: ""
+
+        // Configurer l'adaptateur
+        moviesAdapter = FavoriteApadter(moviesList)
+        recyclerView.adapter = moviesAdapter
+
+        // Appeler l'API pour obtenir les films favoris
+        getFavoriteMovies(userEmail)
+    }
+
+    private fun getFavoriteMovies(userEmail: String) {
+        val call = RetrofitInstance.api.getFavoriteMovies(userEmail)
+
+        call.enqueue(object : Callback<List<Movie>> {
+            override fun onResponse(call: Call<List<Movie>>, response: Response<List<Movie>>) {
+                if (response.isSuccessful) {
+                    // Si la réponse est réussie, ajouter les films à la liste et mettre à jour l'adaptateur
+                    moviesList.clear()
+                    response.body()?.let {
+                        moviesList.addAll(it)
+                    }
+                    moviesAdapter.notifyDataSetChanged()
+                } else {
+                    Toast.makeText(this@whatchList, "Erreur : ${response.message()}", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<List<Movie>>, t: Throwable) {
+                Toast.makeText(this@whatchList, "Erreur de connexion", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }

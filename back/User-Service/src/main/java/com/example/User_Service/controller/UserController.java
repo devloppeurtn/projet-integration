@@ -62,5 +62,16 @@ public class UserController {
         return result ? ResponseEntity.ok("Mot de passe réinitialisé")
                 : ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Token invalide ou expiré");
     }
+    @PostMapping("/{userEmail}/favorites")
+    public ResponseEntity<String> addMovieToFavorites(
+            @PathVariable String userEmail,
+            @RequestParam String movieId) {
+        try {
+            String message = userService.addMovieToFavorites(userEmail, movieId);
+            return ResponseEntity.ok(message);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 }
 

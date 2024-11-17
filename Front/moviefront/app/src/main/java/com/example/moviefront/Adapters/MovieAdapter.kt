@@ -13,7 +13,7 @@ import coil.load
 import com.example.moviefront.Activities.Details
 import com.example.moviefront.R
 
-class MovieAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieAdapter(private val movies: List<Movie>,private val userEmail: String? ) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     // ViewHolder pour chaque élément de la liste
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
@@ -40,6 +40,7 @@ class MovieAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<Movie
                 intent.putExtra("srcTrailler", movie.srcTrailler)
                 intent.putExtra("srcGeo", movie.srcGeo)
                 intent.putExtra("category", movie.category.displayName)
+                intent.putExtra("USER_EMAIL",userEmail)
                 intent.putStringArrayListExtra("productionCompanyNames", ArrayList(movie.productionCompanyNames)) // Passer la liste des noms des entreprises
                 intent.putStringArrayListExtra("productionCompanyLogos", ArrayList(movie.productionCompanyLogos)) // Passer la liste des logos
                 intent.putExtra("vote_average", movie.vote_average)

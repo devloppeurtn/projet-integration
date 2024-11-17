@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.UUID;
 
 @Service
@@ -84,6 +85,31 @@ public class UserService {
 
         // Appeler le service d'envoi d'email et retourner le résultat
         return emailService.sendEmail(email, subject, text);
+    }
+    public String addMovieToFavorites(String userEmail, String movieId) {
+        // Recherche de l'utilisateur par email
+        User user = userRepository.findByEmail(userEmail);
+
+        if (user == null) {
+            throw new RuntimeException("Utilisateur non trouvé avec l'email : " + userEmail);
+        }
+
+        // Vérifier si le film est déjà dans les favoris
+        if (user.getFavoriteMovies().contains(movieId)) {
+            throw new RuntimeException("Le film est déjà dans les favoris.");
+        }
+        // Ajouter l'ID du film aux favoris de l'utilisateur
+        user.getFavoriteMovies().add(movieId);
+        userRepository.save(user); // Sauvegarde de l'utilisateur
+
+        return "Film ajouté aux favoris avec succès.";
+    }
+    public List<Movie> getFavoriteMovies(String email) {
+        User user = userRepository.findByEmail(email);
+        if (user != null) {
+            return user.getFavoriteMovies(); // Supposant que l'entité User a une relation avec les films favoris
+        }
+        return Collections.emptyList();
     }
 }
 

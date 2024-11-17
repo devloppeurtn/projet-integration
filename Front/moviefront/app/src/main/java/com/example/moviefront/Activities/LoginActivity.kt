@@ -100,6 +100,7 @@ class LoginActivity : AppCompatActivity() {
 
                     // Redirection vers l'activité principale
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                    intent.putExtra("USER_EMAIL", email)
                     startActivity(intent)
                     finish() // Ferme l'activité actuelle
                 } else {
