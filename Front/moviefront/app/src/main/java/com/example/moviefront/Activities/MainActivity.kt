@@ -171,10 +171,12 @@ class MainActivity : AppCompatActivity() {
                 // Appel de la fonction suspendue pour récupérer les films
                 Log.d("LoadMovies", "Avant l'appel à getMovies()")
                 val movies = getMovies()
-                Log.d("LoadMovies", "Après l'appel à getMovies()")
+                Log.d("val movies ", "$movies")
 
 
                 val actionMovies = movies.filter { it.category == Category.ACTION }
+                Log.d("category", "$actionMovies")
+
                 val comedyMovies = movies.filter { it.category == Category.COMEDY }
                 val dramaMovies = movies.filter { it.category== Category.DRAMA }
                 val horrorMovies = movies.filter { it.category == Category.HORROR }
