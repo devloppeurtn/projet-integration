@@ -171,5 +171,8 @@ public class tmdbservices {
             throw new RuntimeException("Erreur lors de la récupération des détails du film", e);
         }
     }
-
+   // public List<film> getMoviesByIds(List<String> movieIds) {
+        // Utilise le repository pour trouver les films par leurs IDs
+      //  return movieRepository.findAllById(movieIds);
+    //}
 }

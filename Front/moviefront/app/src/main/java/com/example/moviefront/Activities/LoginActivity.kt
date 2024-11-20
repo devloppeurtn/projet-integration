@@ -80,6 +80,7 @@ class LoginActivity : AppCompatActivity() {
         passwordToggle.setOnClickListener {
             togglePasswordVisibility()
         }
+
     }
 
     // Fonction pour connecter l'utilisateur

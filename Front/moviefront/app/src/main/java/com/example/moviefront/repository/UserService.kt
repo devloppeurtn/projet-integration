@@ -16,10 +16,10 @@ import retrofit2.http.Query
 
 interface UserService {
 
-    @GET("users/{email}/favorites")
+    @GET("users/{email}/favoritess")
     fun getFavoriteMovies(@Path("email") email: String): Call<List<Movie>>
 
-    @POST("users/{email}/favorites")
+    @POST("users/{email}/favoritesss")
     fun addToFavorites(
         @Path("email") email: String,
         @Query("movieId") movieId: String

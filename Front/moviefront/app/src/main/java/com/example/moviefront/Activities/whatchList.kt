@@ -1,7 +1,10 @@
 package com.example.moviefront.Activities
 
 import Movie
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -17,11 +20,14 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class whatchList : AppCompatActivity() {
+    private lateinit var progressBar7: ProgressBar
+
     private lateinit var recyclerView: RecyclerView
     private lateinit var moviesAdapter: FavoriteApadter
     private val moviesList = mutableListOf<Movie>()
     private lateinit var userEmail: String
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -33,27 +39,34 @@ class whatchList : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        progressBar7 = findViewById(R.id.favprog)
+
 
         recyclerView = findViewById(R.id.recfav)
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         // Récupérer l'email de l'utilisateur connecté
-        userEmail = intent.getStringExtra("USER_EMAIL") ?: ""
+       userEmail = intent.getStringExtra("USER_EMAIL") ?: ""
 
         // Configurer l'adaptateur
         moviesAdapter = FavoriteApadter(moviesList)
         recyclerView.adapter = moviesAdapter
+        progressBar7.visibility = View.VISIBLE
 
         // Appeler l'API pour obtenir les films favoris
         getFavoriteMovies(userEmail)
     }
 
     private fun getFavoriteMovies(userEmail: String) {
+        progressBar7.visibility = View.VISIBLE
+
         val call = RetrofitInstance.api.getFavoriteMovies(userEmail)
 
         call.enqueue(object : Callback<List<Movie>> {
             override fun onResponse(call: Call<List<Movie>>, response: Response<List<Movie>>) {
                 if (response.isSuccessful) {
+                    progressBar7.visibility = View.GONE
+
                     // Si la réponse est réussie, ajouter les films à la liste et mettre à jour l'adaptateur
                     moviesList.clear()
                     response.body()?.let {

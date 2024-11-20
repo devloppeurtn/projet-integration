@@ -1,15 +1,14 @@
 package com.example.User_Service.controller;
 
-import com.example.User_Service.entity.ForgotPasswordRequest;
-import com.example.User_Service.entity.LoginRequest;
-import com.example.User_Service.entity.ResetPasswordRequest;
-import com.example.User_Service.entity.User;
+import com.example.User_Service.entity.*;
 import com.example.User_Service.service.EmailService;
 import com.example.User_Service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
@@ -62,16 +61,30 @@ public class UserController {
         return result ? ResponseEntity.ok("Mot de passe réinitialisé")
                 : ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Token invalide ou expiré");
     }
-    @PostMapping("/{userEmail}/favorites")
-    public ResponseEntity<String> addMovieToFavorites(
-            @PathVariable String userEmail,
+    @PostMapping("/{email}/favoritesss")
+    public ResponseEntity<Void> addToFavorites(
+            @PathVariable String email,
             @RequestParam String movieId) {
-        try {
-            String message = userService.addMovieToFavorites(userEmail, movieId);
-            return ResponseEntity.ok(message);
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+
+        // Appel au service pour ajouter le film aux favoris
+        boolean isAdded = userService.addMovieToFavorites(email, movieId);
+
+        if (isAdded) {
+            return ResponseEntity.ok().build(); // Succès
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); // Utilisateur introuvable
         }
+    }
+
+    @GetMapping("/{email}/favoritess")
+    public ResponseEntity<List<film>> getFavoriteMovies(@PathVariable String email) {
+        List<film> favoriteMovies = userService.getFavoriteMoviesByEmail(email);
+
+        if (favoriteMovies == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); // Utilisateur introuvable
+        }
+
+        return ResponseEntity.ok(favoriteMovies);
     }
 }
 

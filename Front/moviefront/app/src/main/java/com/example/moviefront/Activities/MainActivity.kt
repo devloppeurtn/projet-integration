@@ -4,6 +4,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -28,6 +29,7 @@ import getMovies
 import java.util.UUID
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var viewpager2: ViewPager2
     private lateinit var pageChangeListener: ViewPager2.OnPageChangeCallback
     private lateinit var imageList: ArrayList<ImageItem>
@@ -135,6 +137,17 @@ class MainActivity : AppCompatActivity() {
         // Configuration du RecyclerView pour les films
         loadMovies()
 
+        val favButton: ImageView = findViewById(R.id.favbutton)
+
+        // Ajouter un listener de clic
+        favButton.setOnClickListener {
+            val userEmail : String? = intent.getStringExtra("USER_EMAIL")
+
+            // Créer une intention pour démarrer l'activité Favoris
+            val intent = Intent(this, whatchList::class.java)
+            intent.putExtra("USER_EMAIL",userEmail)
+            startActivity(intent)
+        }
 
     }
 

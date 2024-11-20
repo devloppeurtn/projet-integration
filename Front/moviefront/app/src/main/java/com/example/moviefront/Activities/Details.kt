@@ -117,7 +117,7 @@ class Details : AppCompatActivity() {
         call.enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
-                    favoriteIcon.setImageResource(R.drawable.btn_3)
+                    favoriteIcon.setImageResource(R.drawable.added)
                     Toast.makeText(this@Details, "Ajouté aux favoris", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(

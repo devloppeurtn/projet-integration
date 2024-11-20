@@ -6,6 +6,9 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 
-public interface FilmRepository extends MongoRepository<film, String> {
-    List<film> findByCategory(Category category);  // Recherche de films par catégorie
+public interface FilmRepository extends MongoRepository<film, Integer> {
+    List<film> findByCategory(Category category);// Recherche de films par catégorie
+    List<film> findAllById(List<Integer> ids);
+
+
 }
