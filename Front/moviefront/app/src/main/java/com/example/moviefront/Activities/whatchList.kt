@@ -4,6 +4,7 @@ import Movie
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -21,7 +22,6 @@ import retrofit2.Response
 
 class whatchList : AppCompatActivity() {
     private lateinit var progressBar7: ProgressBar
-
     private lateinit var recyclerView: RecyclerView
     private lateinit var moviesAdapter: FavoriteApadter
     private val moviesList = mutableListOf<Movie>()
@@ -55,6 +55,21 @@ class whatchList : AppCompatActivity() {
 
         // Appeler l'API pour obtenir les films favoris
         getFavoriteMovies(userEmail)
+
+
+
+
+
+
+
+
+        val backButton: ImageView = findViewById(R.id.acbtn)
+
+        // Ajouter un listener de clic
+        backButton.setOnClickListener {
+            // Fermer l'activité actuelle et revenir à l'activité précédente
+            finish()
+        }
     }
 
     private fun getFavoriteMovies(userEmail: String) {
