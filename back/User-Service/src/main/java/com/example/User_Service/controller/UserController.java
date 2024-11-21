@@ -86,5 +86,10 @@ public class UserController {
 
         return ResponseEntity.ok(favoriteMovies);
     }
+    @GetMapping("/message") // Définit l'endpoint à "/message"
+    public String getMessage() {
+        return "Hello, this is a simple message!"; // Message à retourner
+    }
+
 }
 
