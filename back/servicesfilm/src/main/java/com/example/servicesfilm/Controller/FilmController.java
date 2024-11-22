@@ -53,8 +53,14 @@ public class FilmController {
     }
 
 
+    @PostMapping("/details")
+    public ResponseEntity<List<film>> getMoviesDetails(@RequestBody List<Integer> movieIds) {
+        List<film> movies = filmService.getMoviesByIds(movieIds); // Appel correct au service
+        return ResponseEntity.ok(movies); // Retourne les films dans la réponse
+    }
 
-   
+
+
 
 
 }

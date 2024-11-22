@@ -1,16 +1,29 @@
 package com.example.moviefront.repository
 
+import Movie
 import com.example.moviefront.models.ForgotPasswordRequest
 import com.example.moviefront.models.LoginRequest
 import com.example.moviefront.models.ResetPasswordRequest
 import com.example.moviefront.models.User
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 
 interface UserService {
 
+    @GET("users/{email}/favoritess")
+    fun getFavoriteMovies(@Path("email") email: String): Call<List<Movie>>
+
+    @POST("users/{email}/favoritesss")
+    fun addToFavorites(
+        @Path("email") email: String,
+        @Query("movieId") movieId: String
+    ): Call<Void>
     @POST("users/register")
     fun registerUser(@Body user: User): Call<User>
 

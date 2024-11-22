@@ -1,15 +1,14 @@
 package com.example.User_Service.controller;
 
-import com.example.User_Service.entity.ForgotPasswordRequest;
-import com.example.User_Service.entity.LoginRequest;
-import com.example.User_Service.entity.ResetPasswordRequest;
-import com.example.User_Service.entity.User;
+import com.example.User_Service.entity.*;
 import com.example.User_Service.service.EmailService;
 import com.example.User_Service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
@@ -62,5 +61,35 @@ public class UserController {
         return result ? ResponseEntity.ok("Mot de passe réinitialisé")
                 : ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Token invalide ou expiré");
     }
+    @PostMapping("/{email}/favoritesss")
+    public ResponseEntity<Void> addToFavorites(
+            @PathVariable String email,
+            @RequestParam String movieId) {
+
+        // Appel au service pour ajouter le film aux favoris
+        boolean isAdded = userService.addMovieToFavorites(email, movieId);
+
+        if (isAdded) {
+            return ResponseEntity.ok().build(); // Succès
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); // Utilisateur introuvable
+        }
+    }
+
+    @GetMapping("/{email}/favoritess")
+    public ResponseEntity<List<film>> getFavoriteMovies(@PathVariable String email) {
+        List<film> favoriteMovies = userService.getFavoriteMoviesByEmail(email);
+
+        if (favoriteMovies == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); // Utilisateur introuvable
+        }
+
+        return ResponseEntity.ok(favoriteMovies);
+    }
+    @GetMapping("/message") // Définit l'endpoint à "/message"
+    public String getMessage() {
+        return "Hello, this is a simple message!"; // Message à retourner
+    }
+
 }
 

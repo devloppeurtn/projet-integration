@@ -4,6 +4,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -28,6 +29,7 @@ import getMovies
 import java.util.UUID
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var viewpager2: ViewPager2
     private lateinit var pageChangeListener: ViewPager2.OnPageChangeCallback
     private lateinit var imageList: ArrayList<ImageItem>
@@ -134,6 +136,19 @@ class MainActivity : AppCompatActivity() {
 
         // Configuration du RecyclerView pour les films
         loadMovies()
+
+        val favButton: ImageView = findViewById(R.id.favbutton)
+
+        // Ajouter un listener de clic
+        favButton.setOnClickListener {
+            val userEmail : String? = intent.getStringExtra("USER_EMAIL")
+
+            // Créer une intention pour démarrer l'activité Favoris
+            val intent = Intent(this, whatchList::class.java)
+            intent.putExtra("USER_EMAIL",userEmail)
+            startActivity(intent)
+        }
+
     }
 
 
@@ -156,56 +171,58 @@ class MainActivity : AppCompatActivity() {
                 // Appel de la fonction suspendue pour récupérer les films
                 Log.d("LoadMovies", "Avant l'appel à getMovies()")
                 val movies = getMovies()
-                Log.d("LoadMovies", "Après l'appel à getMovies()")
+                Log.d("val movies ", "$movies")
 
 
                 val actionMovies = movies.filter { it.category == Category.ACTION }
+                Log.d("category", "$actionMovies")
+
                 val comedyMovies = movies.filter { it.category == Category.COMEDY }
                 val dramaMovies = movies.filter { it.category== Category.DRAMA }
                 val horrorMovies = movies.filter { it.category == Category.HORROR }
                 val thrillerMovies = movies.filter { it.category == Category.THRILLER }
                 val romanceMovies = movies.filter { it.category == Category.ROMANCE }
                 val documentaryMovies = movies.filter { it.category == Category.DOCUMENTARY }
-
+                val userEmail : String? = intent.getStringExtra("USER_EMAIL")
 
                 withContext(Dispatchers.Main) {
-                    val actionAdapter = MovieAdapter(actionMovies)
+                    val actionAdapter = MovieAdapter(actionMovies,userEmail)
                     val recyclerView1 = findViewById<RecyclerView>(R.id.action)
                     recyclerView1.adapter = actionAdapter
                     recyclerView1.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
 
                     // Adapter pour les films de comédie
-                    val comedyAdapter = MovieAdapter(comedyMovies)
+                    val comedyAdapter = MovieAdapter(comedyMovies,userEmail)
                     val recyclerView2 = findViewById<RecyclerView>(R.id.comedy)
                     recyclerView2.adapter = comedyAdapter
                     recyclerView2.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
 
                     // Adapter pour les films dramatiques
-                    val dramaAdapter = MovieAdapter(dramaMovies)
+                    val dramaAdapter = MovieAdapter(dramaMovies,userEmail)
                     val recyclerView3 = findViewById<RecyclerView>(R.id.drama)
                     recyclerView3.adapter = dramaAdapter
                     recyclerView3.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
 
                     // Adapter pour les films d'horreur
-                    val horrorAdapter = MovieAdapter(horrorMovies)
+                    val horrorAdapter = MovieAdapter(horrorMovies,userEmail)
                     val recyclerView4 = findViewById<RecyclerView>(R.id.horror)
                     recyclerView4.adapter = horrorAdapter
                     recyclerView4.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
 
                     // Adapter pour les films de thriller
-                    val thrillerAdapter = MovieAdapter(thrillerMovies)
+                    val thrillerAdapter = MovieAdapter(thrillerMovies,userEmail)
                     val recyclerView5 = findViewById<RecyclerView>(R.id.thriller)
                     recyclerView5.adapter = thrillerAdapter
                     recyclerView5.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
 
                     // Adapter pour les films de romance
-                    val romanceAdapter = MovieAdapter(romanceMovies)
+                    val romanceAdapter = MovieAdapter(romanceMovies,userEmail)
                     val recyclerView6 = findViewById<RecyclerView>(R.id.romance)
                     recyclerView6.adapter = romanceAdapter
                     recyclerView6.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
 
                     // Adapter pour les films documentaires
-                    val documentaryAdapter = MovieAdapter(documentaryMovies)
+                    val documentaryAdapter = MovieAdapter(documentaryMovies,userEmail)
                     val recyclerView7 = findViewById<RecyclerView>(R.id.documentary)
                     recyclerView7.adapter = documentaryAdapter
                     recyclerView7.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)

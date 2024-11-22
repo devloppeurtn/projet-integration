@@ -86,7 +86,7 @@ public class tmdbservices {
     }
 
     public void importMovies() {
-        int totalPages = 10; // Exemple pour récupérer 5 pages de films
+        int totalPages = 60; // Exemple pour récupérer 5 pages de films
         for (int page = 1; page <= totalPages; page++) {
             String url = "https://api.themoviedb.org/3/discover/movie?api_key=" + apiKey + "&language=en-US&sort_by=popularity.desc&page=" + page;
             ResponseEntity<Map> response = restTemplate.getForEntity(url, Map.class);
@@ -129,47 +129,69 @@ public class tmdbservices {
                     movieRepository.save(movie);
                 }
             }
+
+
+        }}
+        private Category mapGenreIdToCategory ( int genreId){
+            switch (genreId) {
+                case 28:
+                    return Category.ACTION;
+                case 12:
+                    return Category.ADVENTURE;
+                case 16:
+                    return Category.ANIMATION;
+                case 35:
+                    return Category.COMEDY;
+                case 80:
+                    return Category.CRIME;
+                case 99:
+                    return Category.DOCUMENTARY;
+                case 18:
+                    return Category.DRAMA;
+                case 10751:
+                    return Category.FAMILY;
+                case 14:
+                    return Category.FANTASY;
+                case 36:
+                    return Category.HISTORY;
+                case 27:
+                    return Category.HORROR;
+                case 10402:
+                    return Category.MUSIC;
+                case 9648:
+                    return Category.MYSTERY;
+                case 10749:
+                    return Category.ROMANCE;
+                case 878:
+                    return Category.SCIENCE_FICTION;
+                case 10770:
+                    return Category.TV_MOVIE;
+                case 53:
+                    return Category.THRILLER;
+                case 10752:
+                    return Category.WAR;
+                case 37:
+                    return Category.WESTERN;
+                default:
+                    return null; // Ou gérer l'absence de correspondance
+            }
         }
-    }
-    private Category mapGenreIdToCategory(int genreId) {
-        switch (genreId) {
-            case 28: return Category.ACTION;
-            case 12: return Category.ADVENTURE;
-            case 16: return Category.ANIMATION;
-            case 35: return Category.COMEDY;
-            case 80: return Category.CRIME;
-            case 99: return Category.DOCUMENTARY;
-            case 18: return Category.DRAMA;
-            case 10751: return Category.FAMILY;
-            case 14: return Category.FANTASY;
-            case 36: return Category.HISTORY;
-            case 27: return Category.HORROR;
-            case 10402: return Category.MUSIC;
-            case 9648: return Category.MYSTERY;
-            case 10749: return Category.ROMANCE;
-            case 878: return Category.SCIENCE_FICTION;
-            case 10770: return Category.TV_MOVIE;
-            case 53: return Category.THRILLER;
-            case 10752: return Category.WAR;
-            case 37: return Category.WESTERN;
-            default: return null; // Ou gérer l'absence de correspondance
+
+
+        public static film getMovieDetails ( int movieId){
+            RestTemplate restTemplate = new RestTemplate();
+            String url = BASE_URL + movieId + "?api_key=" + apiKey;
+
+            try {
+                ResponseEntity<film> response = restTemplate.getForEntity(url, film.class);
+                return response.getBody();
+            } catch (HttpClientErrorException e) {
+                // Gérer l'exception ici, par exemple en journalisant l'erreur
+                throw new RuntimeException("Erreur lors de la récupération des détails du film", e);
+            }
         }
+        // public List<film> getMoviesByIds(List<String> movieIds) {
+        // Utilise le repository pour trouver les films par leurs IDs
+        //  return movieRepository.findAllById(movieIds);
+        //}
     }
-
-
-
-
-    public static film getMovieDetails(int movieId) {
-        RestTemplate restTemplate = new RestTemplate();
-        String url = BASE_URL + movieId + "?api_key=" + apiKey;
-
-        try {
-            ResponseEntity<film> response = restTemplate.getForEntity(url, film.class);
-            return response.getBody();
-        } catch (HttpClientErrorException e) {
-            // Gérer l'exception ici, par exemple en journalisant l'erreur
-            throw new RuntimeException("Erreur lors de la récupération des détails du film", e);
-        }
-    }
-
-}

@@ -80,6 +80,7 @@ class LoginActivity : AppCompatActivity() {
         passwordToggle.setOnClickListener {
             togglePasswordVisibility()
         }
+
     }
 
     // Fonction pour connecter l'utilisateur
@@ -100,6 +101,7 @@ class LoginActivity : AppCompatActivity() {
 
                     // Redirection vers l'activité principale
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                    intent.putExtra("USER_EMAIL", email)
                     startActivity(intent)
                     finish() // Ferme l'activité actuelle
                 } else {
