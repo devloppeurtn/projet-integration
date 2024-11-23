@@ -1,24 +1,20 @@
 package com.example.moviefront.Activities
 
-
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.ProgressBar
-import android.widget.Spinner
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviefront.Adapters.ProductAdapter
-import com.example.moviefront.Domian.MockDataSource
+import com.example.moviefront.Domian.Product
 import com.example.moviefront.R
-
 
 class ShoppingFragment : AppCompatActivity() {
     private lateinit var adapter: ProductAdapter
     private lateinit var progressBar: ProgressBar
     private lateinit var recyclerView: RecyclerView
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,30 +23,32 @@ class ShoppingFragment : AppCompatActivity() {
         progressBar = findViewById(R.id.progressBarPr)
         recyclerView = findViewById(R.id.productview)
 
-        setupLocationSpinner()
         setupRecyclerView()
 
         loadProducts() // Appelle la fonction ici
     }
 
-    private fun setupLocationSpinner() {
-        val spinner: Spinner = findViewById(R.id.locatioSp)
-        val items = listOf("Option 1", "Option 2", "Option 3")
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
-        spinner.adapter = adapter
-    }
-
     private fun setupRecyclerView() {
-        adapter = ProductAdapter(MockDataSource.getProducts())
+        val products = MockDataSource.getProducts()
+        adapter = ProductAdapter(products, ::onProductClick) // Using a function reference
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recyclerView.adapter = adapter
     }
 
+    private fun onProductClick(product: Product) {
+        val intent = Intent(this, product_detail::class.java).apply {
+            putExtra("product_name", product.name)
+            putExtra("product_image", product.imageResId)
+            putExtra("product_price", product.price)
+            putExtra("product_description", product.description)
+        }
+        startActivity(intent)
+    }
+
     private fun loadProducts() {
         recyclerView.postDelayed({
-            progressBar.visibility = View.GONE // Cache le ProgressBar
-            recyclerView.visibility = View.VISIBLE // Affiche le RecyclerView
-        }, 5000) // Délai de 1 seconde
+            progressBar.visibility = View.GONE // Hide progress bar
+            recyclerView.visibility = View.VISIBLE // Show recycler view
+        }, 5000) // Delay to simulate loading
     }
 }
-
