@@ -58,7 +58,10 @@ public class FilmController {
         List<film> movies = filmService.getMoviesByIds(movieIds); // Appel correct au service
         return ResponseEntity.ok(movies); // Retourne les films dans la réponse
     }
-
+    @GetMapping("/search")
+    public List<film> searchFilms(@RequestParam String keyword) {
+        return filmService.searchByAll(keyword);
+    }
 
 
 

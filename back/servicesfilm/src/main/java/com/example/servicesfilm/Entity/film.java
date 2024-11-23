@@ -20,9 +20,10 @@ public class film {
     private String srcTrailler;
     private String srcGeo;
     private Category category;
-    private double vote_average ;
+    private double vote_average;
     private List<String> productionCompanyNames;
     private List<String> productionCompanyLogos;
+    private boolean isPremium;
 
 
 }

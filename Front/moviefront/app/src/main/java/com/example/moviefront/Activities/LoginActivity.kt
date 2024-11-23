@@ -90,6 +90,7 @@ class LoginActivity : AppCompatActivity() {
         RetrofitInstance.api.loginUser(loginRequest).enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 if (response.isSuccessful) {
+                    val user = response.body() // Récupère l'objet User
                     Toast.makeText(this@LoginActivity, "Connexion réussie", Toast.LENGTH_SHORT).show()
 
                     // Sauvegarde des informations si "Remember Me" est activé
@@ -102,6 +103,9 @@ class LoginActivity : AppCompatActivity() {
                     // Redirection vers l'activité principale
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     intent.putExtra("USER_EMAIL", email)
+                    if (user != null) {
+                        intent.putExtra("IS_PREMIUM",user.isPremiumMember)
+                    }
                     startActivity(intent)
                     finish() // Ferme l'activité actuelle
                 } else {

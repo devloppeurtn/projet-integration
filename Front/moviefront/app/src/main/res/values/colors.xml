@@ -7,4 +7,20 @@
     <color name="yelow">#FFC107</color>
     <color name="dark_blue">#252836</color>
 
+    <color name="colorPrimary">#007BFF</color> <!-- Bleu principal pour le titre et les boutons -->
+    <color name="colorPrimaryDark">#0056b3</color> <!-- Bleu plus foncé pour la barre de statut et les arrière-plans -->
+    <color name="colorAccent">#FF4081</color> <!-- Couleur d'accent (rose vif pour les boutons et éléments interactifs) -->
+
+    <!-- Couleurs de fond et de texte -->
+    <color name="colorBackground">#F4F6FA</color> <!-- Fond clair et moderne pour toute la page -->
+    <color name="colorText">#333333</color> <!-- Texte principal en gris foncé pour la lisibilité -->
+    <color name="colorHint">#888888</color> <!-- Couleur des indices de champ de texte (gris clair) -->
+    <color name="colorSearchBackground">#E0E0E0</color> <!-- Gris clair pour le fond du champ -->
+    <!-- Couleurs des éléments secondaires -->
+    <color name="colorButton">#4CAF50</color> <!-- Couleur du bouton de soumission -->
+    <color name="colorTextSecondary">#B0BEC5</color> <!-- Texte secondaire (ex : pour les Termes et conditions) -->
+    <color name="colorTextLink">#007BFF</color> <!-- Couleur pour les liens (ex : termes et conditions) -->
+    <color name="gray">#808080</color>
+    <!-- Couleurs pour les erreurs -->
+    <color name="colorError">#F44336</color>
 </resources>

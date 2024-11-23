@@ -1,4 +1,5 @@
 package com.example.moviefront.Activities
+import Movie
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -9,8 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ProgressBar
@@ -29,6 +33,7 @@ import getMovies
 import java.util.UUID
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var searchInput: EditText
 
     private lateinit var viewpager2: ViewPager2
     private lateinit var pageChangeListener: ViewPager2.OnPageChangeCallback
@@ -40,6 +45,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var progressBar5: ProgressBar
     private lateinit var progressBar6: ProgressBar
     private lateinit var progressBar7: ProgressBar
+    private var isPremium: Boolean = false
+
     // Déclaration de la ProgressBar
     // Déclaration de la ProgressBar
     private val handler = Handler(Looper.getMainLooper())
@@ -61,6 +68,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        isPremium = intent.getBooleanExtra("IS_PREMIUM", false)
+
         // Initialisation de la ProgressBar
         progressBar = findViewById(R.id.pg1)
         progressBar2 = findViewById(R.id.pg2)
@@ -69,6 +78,32 @@ class MainActivity : AppCompatActivity() {
         progressBar5 = findViewById(R.id.pg5)
         progressBar6 = findViewById(R.id.pg6)
         progressBar7 = findViewById(R.id.pg7)
+        searchInput = findViewById(R.id.searchInput)
+
+        // Ajouter un TextWatcher pour détecter les changements dans le champ de texte
+        searchInput.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                val query = s.toString()
+                val userEmail : String? = intent.getStringExtra("USER_EMAIL")
+
+                if (query.isNotEmpty()) {
+                    // Si l'utilisateur a commencé à taper, ouvrir l'activité SearchActivity
+                    val intent = Intent(this@MainActivity, SearchActivity::class.java)
+                    intent.putExtra("search_query", query)  // Passer la requête de recherche
+                    intent.putExtra("USER_EMAIL", userEmail)  // Passer la requête de recherche
+                    Log.d("user email a search", "  lemail est : $userEmail")
+
+                    startActivity(intent)
+                    searchInput.setText("")
+
+                }
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
 
 
 
@@ -186,43 +221,57 @@ class MainActivity : AppCompatActivity() {
                 val userEmail : String? = intent.getStringExtra("USER_EMAIL")
 
                 withContext(Dispatchers.Main) {
-                    val actionAdapter = MovieAdapter(actionMovies,userEmail)
+                    val actionAdapter = MovieAdapter(actionMovies,userEmail ,isPremium){ movie ->
+                        handleMovieClick(movie)
+                    }
                     val recyclerView1 = findViewById<RecyclerView>(R.id.action)
                     recyclerView1.adapter = actionAdapter
                     recyclerView1.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
 
                     // Adapter pour les films de comédie
-                    val comedyAdapter = MovieAdapter(comedyMovies,userEmail)
+                    val comedyAdapter = MovieAdapter(comedyMovies,userEmail,isPremium){ movie ->
+                        handleMovieClick(movie)
+                    }
                     val recyclerView2 = findViewById<RecyclerView>(R.id.comedy)
                     recyclerView2.adapter = comedyAdapter
                     recyclerView2.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
 
                     // Adapter pour les films dramatiques
-                    val dramaAdapter = MovieAdapter(dramaMovies,userEmail)
+                    val dramaAdapter = MovieAdapter(dramaMovies,userEmail,isPremium){ movie ->
+                        handleMovieClick(movie)
+                    }
                     val recyclerView3 = findViewById<RecyclerView>(R.id.drama)
                     recyclerView3.adapter = dramaAdapter
                     recyclerView3.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
 
                     // Adapter pour les films d'horreur
-                    val horrorAdapter = MovieAdapter(horrorMovies,userEmail)
+                    val horrorAdapter = MovieAdapter(horrorMovies,userEmail,isPremium){ movie ->
+                        handleMovieClick(movie)
+                    }
                     val recyclerView4 = findViewById<RecyclerView>(R.id.horror)
                     recyclerView4.adapter = horrorAdapter
                     recyclerView4.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
 
                     // Adapter pour les films de thriller
-                    val thrillerAdapter = MovieAdapter(thrillerMovies,userEmail)
+                    val thrillerAdapter = MovieAdapter(thrillerMovies,userEmail,isPremium){ movie ->
+                        handleMovieClick(movie)
+                    }
                     val recyclerView5 = findViewById<RecyclerView>(R.id.thriller)
                     recyclerView5.adapter = thrillerAdapter
                     recyclerView5.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
 
                     // Adapter pour les films de romance
-                    val romanceAdapter = MovieAdapter(romanceMovies,userEmail)
+                    val romanceAdapter = MovieAdapter(romanceMovies,userEmail,isPremium){ movie ->
+                        handleMovieClick(movie)
+                    }
                     val recyclerView6 = findViewById<RecyclerView>(R.id.romance)
                     recyclerView6.adapter = romanceAdapter
                     recyclerView6.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
 
                     // Adapter pour les films documentaires
-                    val documentaryAdapter = MovieAdapter(documentaryMovies,userEmail)
+                    val documentaryAdapter = MovieAdapter(documentaryMovies,userEmail,isPremium){ movie ->
+                        handleMovieClick(movie)
+                    }
                     val recyclerView7 = findViewById<RecyclerView>(R.id.documentary)
                     recyclerView7.adapter = documentaryAdapter
                     recyclerView7.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
@@ -270,4 +319,26 @@ class MainActivity : AppCompatActivity() {
         viewpager2.unregisterOnPageChangeCallback(pageChangeListener)
         handler.removeCallbacks(autoSlideRunnable) // Nettoyage
     }
+
+    private fun handleMovieClick(movie: Movie) {
+        if (!isPremium && movie.isPremium) {
+            // L'utilisateur n'est pas premium et le film est premium
+            Toast.makeText(this, "Ce film est premium. Abonnez-vous pour y accéder.", Toast.LENGTH_LONG).show()
+            val intent = Intent(this, SubscriptionActivity::class.java)
+            startActivity(intent)
+        } else {
+            // Permettre l'accès au film
+            val intent = Intent(this, Details::class.java)
+            intent.putExtra("id", movie.id)
+            intent.putExtra("title", movie.title)
+            intent.putExtra("description", movie.description)
+            intent.putExtra("releaseYear", movie.releaseYear)
+            intent.putExtra("srcImage", movie.srcImage)
+            intent.putExtra("srcTrailler", movie.srcTrailler)
+            intent.putExtra("srcGeo", movie.srcGeo)
+            intent.putExtra("category", movie.category.displayName)
+            startActivity(intent)
+        }
+    }
+
 }

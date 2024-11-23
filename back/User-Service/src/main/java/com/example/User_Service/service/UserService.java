@@ -6,10 +6,12 @@ import com.example.User_Service.entity.film;
 import com.example.User_Service.repository.PasswordResetTokenRepository;
 import com.example.User_Service.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -39,6 +41,8 @@ public class UserService {
 
     public User registerUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPremiumMember(false); // Assurer que l'utilisateur est non-premium par défaut
+
         return userRepository.save(user);
     }
 
@@ -181,5 +185,15 @@ public class UserService {
 
         return true; // Succès
     }
+
+    public User subscribeToPremium(String email) {
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Utilisateur introuvable");
+        }
+        user.setPremiumMember(true);
+        return userRepository.save(user);
+    }
+
 }
 

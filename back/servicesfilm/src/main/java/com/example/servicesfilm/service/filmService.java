@@ -1,6 +1,7 @@
 package com.example.servicesfilm.service;
 
 import com.example.servicesfilm.Entity.film;
+import com.example.servicesfilm.Repository.FilmCustomRepository;
 import com.example.servicesfilm.Repository.FilmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,10 +14,12 @@ import java.util.Optional;
 public class filmService {
 
     private final FilmRepository filmRepository;
+    private final FilmCustomRepository customRepository;
 
     @Autowired
-    public filmService(FilmRepository filmRepository, FilmRepository movieRepository) {
+    public filmService(FilmRepository filmRepository, FilmRepository movieRepository, FilmCustomRepository customRepository) {
         this.filmRepository = filmRepository;
+        this.customRepository = customRepository;
     }
 
 
@@ -37,6 +40,8 @@ public class filmService {
 
         return films;
     }
-
+    public List<film> searchByAll(String keyword) {
+        return customRepository.searchByAllCriteria(keyword);
+    }
 
 }

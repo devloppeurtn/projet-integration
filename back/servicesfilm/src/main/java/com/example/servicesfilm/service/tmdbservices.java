@@ -86,7 +86,9 @@ public class tmdbservices {
     }
 
     public void importMovies() {
-        int totalPages = 60; // Exemple pour récupérer 5 pages de films
+        int totalPages = 60; // Exemple pour récupérer 60 pages de films
+        List<film> allMovies = new ArrayList<>(); // Liste pour stocker tous les films importés temporairement
+
         for (int page = 1; page <= totalPages; page++) {
             String url = "https://api.themoviedb.org/3/discover/movie?api_key=" + apiKey + "&language=en-US&sort_by=popularity.desc&page=" + page;
             ResponseEntity<Map> response = restTemplate.getForEntity(url, Map.class);
@@ -126,12 +128,30 @@ public class tmdbservices {
                         movie.setProductionCompanyLogos(productionCompanyLogos);
                     }
 
-                    movieRepository.save(movie);
+                    // Ajouter le film à la liste temporaire
+                    allMovies.add(movie);
                 }
             }
+        }
+
+        // Mélanger la liste pour rendre la sélection premium aléatoire
+        Collections.shuffle(allMovies);
+
+        // Définir 40% des films comme premium
+        int premiumCount = (int) (allMovies.size() * 0.4); // Calcul du nombre de films premium
+        for (int i = 0; i < allMovies.size(); i++) {
+            if (i < premiumCount) {
+                allMovies.get(i).setPremium(true); // Définir le film comme premium
+            } else {
+                allMovies.get(i).setPremium(false); // Définir le film comme non premium
+            }
+            // Sauvegarder chaque film dans le dépôt
+            movieRepository.save(allMovies.get(i));
+        }
+    }
 
 
-        }}
+
         private Category mapGenreIdToCategory ( int genreId){
             switch (genreId) {
                 case 28:

@@ -91,5 +91,11 @@ public class UserController {
         return "Hello, this is a simple message!"; // Message à retourner
     }
 
+
+
+    @PostMapping("/subscribe")
+    public User subscribeToPremium(@RequestHeader("User-Email") String email) {
+        return userService.subscribeToPremium(email);
+    }
 }
 

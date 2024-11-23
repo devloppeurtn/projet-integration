@@ -22,6 +22,7 @@ public class film {
     private double vote_average ;
     private List<String> productionCompanyNames;
     private List<String> productionCompanyLogos;
+    private boolean isPremium;
 
 
 }
