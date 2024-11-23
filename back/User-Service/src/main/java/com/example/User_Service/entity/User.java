@@ -1,5 +1,6 @@
 package com.example.User_Service.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
@@ -18,6 +19,7 @@ public class User {
     private String email;
     private String password;
     private List<String> favoriteMovies = new ArrayList<>();
+    @JsonProperty("isPremiumMember")
     private boolean isPremiumMember;
 }
 

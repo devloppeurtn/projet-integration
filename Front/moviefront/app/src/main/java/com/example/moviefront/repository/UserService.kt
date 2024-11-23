@@ -16,8 +16,9 @@ import retrofit2.http.Query
 
 
 interface UserService {
-    @POST("subscribe")
+    @POST("users/subscribe")
     fun subscribeToPremium(@Header("User-Email") email: String): Call<User>
+
     @GET("users/{email}/favoritess")
     fun getFavoriteMovies(@Path("email") email: String): Call<List<Movie>>
 

@@ -12,6 +12,7 @@ import kotlinx.serialization.json.Json
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import android.os.Parcelable
+import kotlinx.serialization.SerialName
 
 // Définir la classe de données Movie en tant que Parcelable pour une compatibilité avec RecyclerView
 @Parcelize

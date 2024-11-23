@@ -91,6 +91,8 @@ class LoginActivity : AppCompatActivity() {
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 if (response.isSuccessful) {
                     val user = response.body() // Récupère l'objet User
+                    Log.e("isp", "rep :${user}")
+
                     Toast.makeText(this@LoginActivity, "Connexion réussie", Toast.LENGTH_SHORT).show()
 
                     // Sauvegarde des informations si "Remember Me" est activé
@@ -105,6 +107,8 @@ class LoginActivity : AppCompatActivity() {
                     intent.putExtra("USER_EMAIL", email)
                     if (user != null) {
                         intent.putExtra("IS_PREMIUM",user.isPremiumMember)
+                        Log.e("isp", "rep :${user.isPremiumMember}")
+
                     }
                     startActivity(intent)
                     finish() // Ferme l'activité actuelle

@@ -1,5 +1,6 @@
 package com.example.servicesfilm.Entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -23,6 +24,7 @@ public class film {
     private double vote_average;
     private List<String> productionCompanyNames;
     private List<String> productionCompanyLogos;
+    @JsonProperty("isPremium")
     private boolean isPremium;
 
 

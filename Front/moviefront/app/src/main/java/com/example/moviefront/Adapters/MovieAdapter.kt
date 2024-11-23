@@ -4,6 +4,7 @@ import Movie
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +21,7 @@ class MovieAdapter(
     private val movies: List<Movie>,
     private val userEmail: String?,
     private val isPremiumUser: Boolean,
-    private val onMovieClick: (Movie) -> Unit // Vérifie si l'utilisateur est premium
+    // Vérifie si l'utilisateur est premium
 ) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
@@ -37,9 +38,11 @@ class MovieAdapter(
             if (position != RecyclerView.NO_POSITION) {
                 val movie = movies[position]
                 val context = itemView.context
+                Log.e("testif","premium user $isPremiumUser et film premium ${movie.isPremium}")
 
                 // Si l'utilisateur n'est pas premium et que le film est premium, afficher un dialog
                 if (!isPremiumUser && movie.isPremium) {
+                    Log.e("testif","premium user $isPremiumUser et film premium ${movie.isPremium}")
                     showPremiumDialog(context) // Vous pouvez afficher une fenêtre de dialogue ici
                 } else {
                     // Naviguer vers les détails du film
@@ -47,7 +50,7 @@ class MovieAdapter(
                 }
 
                 // Appeler le callback passé à l'adaptateur pour la gestion de l'événement clic
-                onMovieClick(movie)
+
             }
         }
 
@@ -91,6 +94,7 @@ class MovieAdapter(
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val movie = movies[position]
+
 
         // Charger l'image avec Coil
         holder.imageView.load(movie.srcImage) {

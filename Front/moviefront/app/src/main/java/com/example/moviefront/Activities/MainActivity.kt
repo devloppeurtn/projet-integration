@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         isPremium = intent.getBooleanExtra("IS_PREMIUM", false)
+        Log.e("ispremium", "  lemail est : $isPremium")
 
         // Initialisation de la ProgressBar
         progressBar = findViewById(R.id.pg1)
@@ -206,7 +207,8 @@ class MainActivity : AppCompatActivity() {
                 // Appel de la fonction suspendue pour récupérer les films
                 Log.d("LoadMovies", "Avant l'appel à getMovies()")
                 val movies = getMovies()
-                Log.d("val movies ", "$movies")
+                Log.e("testispr","$movies")
+
 
 
                 val actionMovies = movies.filter { it.category == Category.ACTION }
@@ -221,57 +223,43 @@ class MainActivity : AppCompatActivity() {
                 val userEmail : String? = intent.getStringExtra("USER_EMAIL")
 
                 withContext(Dispatchers.Main) {
-                    val actionAdapter = MovieAdapter(actionMovies,userEmail ,isPremium){ movie ->
-                        handleMovieClick(movie)
-                    }
+                    val actionAdapter = MovieAdapter(actionMovies,userEmail ,isPremium)
                     val recyclerView1 = findViewById<RecyclerView>(R.id.action)
                     recyclerView1.adapter = actionAdapter
                     recyclerView1.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
 
                     // Adapter pour les films de comédie
-                    val comedyAdapter = MovieAdapter(comedyMovies,userEmail,isPremium){ movie ->
-                        handleMovieClick(movie)
-                    }
+                    val comedyAdapter = MovieAdapter(comedyMovies,userEmail,isPremium)
                     val recyclerView2 = findViewById<RecyclerView>(R.id.comedy)
                     recyclerView2.adapter = comedyAdapter
                     recyclerView2.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
 
                     // Adapter pour les films dramatiques
-                    val dramaAdapter = MovieAdapter(dramaMovies,userEmail,isPremium){ movie ->
-                        handleMovieClick(movie)
-                    }
+                    val dramaAdapter = MovieAdapter(dramaMovies,userEmail,isPremium)
                     val recyclerView3 = findViewById<RecyclerView>(R.id.drama)
                     recyclerView3.adapter = dramaAdapter
                     recyclerView3.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
 
                     // Adapter pour les films d'horreur
-                    val horrorAdapter = MovieAdapter(horrorMovies,userEmail,isPremium){ movie ->
-                        handleMovieClick(movie)
-                    }
+                    val horrorAdapter = MovieAdapter(horrorMovies,userEmail,isPremium)
                     val recyclerView4 = findViewById<RecyclerView>(R.id.horror)
                     recyclerView4.adapter = horrorAdapter
                     recyclerView4.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
 
                     // Adapter pour les films de thriller
-                    val thrillerAdapter = MovieAdapter(thrillerMovies,userEmail,isPremium){ movie ->
-                        handleMovieClick(movie)
-                    }
+                    val thrillerAdapter = MovieAdapter(thrillerMovies,userEmail,isPremium)
                     val recyclerView5 = findViewById<RecyclerView>(R.id.thriller)
                     recyclerView5.adapter = thrillerAdapter
                     recyclerView5.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
 
                     // Adapter pour les films de romance
-                    val romanceAdapter = MovieAdapter(romanceMovies,userEmail,isPremium){ movie ->
-                        handleMovieClick(movie)
-                    }
+                    val romanceAdapter = MovieAdapter(romanceMovies,userEmail,isPremium)
                     val recyclerView6 = findViewById<RecyclerView>(R.id.romance)
                     recyclerView6.adapter = romanceAdapter
                     recyclerView6.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
 
                     // Adapter pour les films documentaires
-                    val documentaryAdapter = MovieAdapter(documentaryMovies,userEmail,isPremium){ movie ->
-                        handleMovieClick(movie)
-                    }
+                    val documentaryAdapter = MovieAdapter(documentaryMovies,userEmail,isPremium)
                     val recyclerView7 = findViewById<RecyclerView>(R.id.documentary)
                     recyclerView7.adapter = documentaryAdapter
                     recyclerView7.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
@@ -320,25 +308,6 @@ class MainActivity : AppCompatActivity() {
         handler.removeCallbacks(autoSlideRunnable) // Nettoyage
     }
 
-    private fun handleMovieClick(movie: Movie) {
-        if (!isPremium && movie.isPremium) {
-            // L'utilisateur n'est pas premium et le film est premium
-            Toast.makeText(this, "Ce film est premium. Abonnez-vous pour y accéder.", Toast.LENGTH_LONG).show()
-            val intent = Intent(this, SubscriptionActivity::class.java)
-            startActivity(intent)
-        } else {
-            // Permettre l'accès au film
-            val intent = Intent(this, Details::class.java)
-            intent.putExtra("id", movie.id)
-            intent.putExtra("title", movie.title)
-            intent.putExtra("description", movie.description)
-            intent.putExtra("releaseYear", movie.releaseYear)
-            intent.putExtra("srcImage", movie.srcImage)
-            intent.putExtra("srcTrailler", movie.srcTrailler)
-            intent.putExtra("srcGeo", movie.srcGeo)
-            intent.putExtra("category", movie.category.displayName)
-            startActivity(intent)
-        }
-    }
+
 
 }
