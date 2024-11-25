@@ -49,6 +49,6 @@ class ShoppingFragment : AppCompatActivity() {
         recyclerView.postDelayed({
             progressBar.visibility = View.GONE // Hide progress bar
             recyclerView.visibility = View.VISIBLE // Show recycler view
-        }, 5000) // Delay to simulate loading
+        }, 2000) // Delay to simulate loading
     }
 }

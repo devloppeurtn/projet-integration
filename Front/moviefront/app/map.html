@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Map</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <style>
+            #map {
+                height: 100%;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="map"></div>
+        <script>
+            var map = L.map('map').setView([48.8566, 2.3522], 12);
+
+            // Ajouter des tuiles OpenStreetMap
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+            }).addTo(map);
+
+            // Ajouter des marqueurs
+            var cinemas = [
+                {name: "Cinéma 1", lat: 48.8566, lng: 2.3522},
+                {name: "Cinéma 2", lat: 48.866667, lng: 2.333333},
+                {name: "Cinéma 3", lat: 48.8738, lng: 2.295}
+            ];
+
+            cinemas.forEach(function(cinema) {
+                L.marker([cinema.lat, cinema.lng]).addTo(map)
+                 .bindPopup(cinema.name)
+                 .openPopup();
+            });
+        </script>
+    </body>
+</html>

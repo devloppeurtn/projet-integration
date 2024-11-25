@@ -97,5 +97,14 @@ public class UserController {
     public User subscribeToPremium(@RequestHeader("User-Email") String email) {
         return userService.subscribeToPremium(email);
     }
+    @DeleteMapping("/{email}/deletefavorite/{movieId}")
+    public ResponseEntity<String> removeFavoriteMovie(@PathVariable String email, @PathVariable String movieId) {
+        boolean success = userService.removeFavoriteMovie(email, movieId);
+        if (success) {
+            return ResponseEntity.ok("Movie removed from favorites successfully.");
+        } else {
+            return ResponseEntity.badRequest().body("Failed to remove movie from favorites.");
+        }
+    }
 }
 

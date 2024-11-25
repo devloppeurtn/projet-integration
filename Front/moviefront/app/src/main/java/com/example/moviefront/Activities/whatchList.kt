@@ -3,6 +3,7 @@ package com.example.moviefront.Activities
 import Movie
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
@@ -49,7 +50,9 @@ class whatchList : AppCompatActivity() {
        userEmail = intent.getStringExtra("USER_EMAIL") ?: ""
 
         // Configurer l'adaptateur
-        moviesAdapter = FavoriteApadter(moviesList)
+        moviesAdapter = FavoriteApadter(moviesList) { movie ->
+            removeFavoriteMovie(userEmail, movie)
+        }
         recyclerView.adapter = moviesAdapter
         progressBar7.visibility = View.VISIBLE
 
@@ -98,4 +101,31 @@ class whatchList : AppCompatActivity() {
             }
         })
     }
+    private fun removeFavoriteMovie(userEmail: String, movie: Movie) {
+        val call = RetrofitInstance.api.removeFavoriteMovie(userEmail, movie.id.toString())
+
+        call.enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@whatchList, "${movie.title} supprimé des favoris", Toast.LENGTH_SHORT).show()
+
+                    // Supprimer le film de la liste et mettre à jour l'adaptateur
+                    if (moviesList.contains(movie)) {
+                        moviesList.remove(movie)
+                        moviesAdapter.notifyDataSetChanged()
+                    }
+                } else {
+                    // Log détaillé pour examiner la réponse en cas d'erreur
+                    Log.e("RemoveFavorite", "Erreur ${response.code()}: ${response.message()}")
+                    Toast.makeText(this@whatchList, "Erreur 1 : ${response.code()} - ${response.message()}", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                Toast.makeText(this@whatchList, "Erreur de connexion", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
 }

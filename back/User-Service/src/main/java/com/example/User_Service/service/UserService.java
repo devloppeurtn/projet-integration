@@ -194,6 +194,19 @@ public class UserService {
         user.setPremiumMember(true);
         return userRepository.save(user);
     }
+    public boolean removeFavoriteMovie(String email, String movieId) {
+        Optional<User> optionalUser = Optional.ofNullable(userRepository.findByEmail(email));
+
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            if (user.getFavoriteMovies() != null && user.getFavoriteMovies().contains(movieId)) {
+                user.getFavoriteMovies().remove(movieId); // Remove the movie ID from the list
+                userRepository.save(user); // Save the updated user
+                return true; // Successfully removed
+            }
+        }
+        return false; // User not found or movie ID not in the list
+    }
 
 }
 

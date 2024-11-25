@@ -40,7 +40,8 @@ android {
 
 dependencies {
     // Dépendances de Glide
-    implementation("com.github.bumptech.glide:glide:4.15.0") // Mise à jour de Glide
+    implementation("com.github.bumptech.glide:glide:4.15.0")
+    implementation(libs.play.services.maps) // Mise à jour de Glide
     kapt("com.github.bumptech.glide:compiler:4.15.0") // Assurez-vous que kapt est activé
 
     // Autres dépendances
@@ -66,6 +67,4 @@ dependencies {
     implementation("io.coil-kt:coil:2.1.0")
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("androidx.recyclerview:recyclerview:1.3.2")
-
-}
+    implementation ("androidx.recyclerview:recyclerview:1.3.2")}

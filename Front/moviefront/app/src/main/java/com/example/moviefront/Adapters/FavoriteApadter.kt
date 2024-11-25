@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.moviefront.R
 
-class FavoriteApadter(private val movies: List<Movie>) : RecyclerView.Adapter<FavoriteApadter.MovieViewHolder>() {
+class FavoriteApadter(private val movies: List<Movie> , private val onRemoveClick: (Movie) -> Unit ) : RecyclerView.Adapter<FavoriteApadter.MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_movie, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_movie_favorite, parent, false)
         return MovieViewHolder(view)
     }
 
@@ -28,6 +28,7 @@ class FavoriteApadter(private val movies: List<Movie>) : RecyclerView.Adapter<Fa
         private val titleTextView: TextView = itemView.findViewById(R.id.titlemoviee)
         //private val descriptionTextView: TextView = itemView.findViewById(R.id.movie_description)
         private val imageView: ImageView = itemView.findViewById(R.id.movieImage)
+        private val removeButton: ImageView = itemView.findViewById(R.id.removeFavorite)
 
         fun bind(movie: Movie) {
             titleTextView.text = movie.title
@@ -35,6 +36,9 @@ class FavoriteApadter(private val movies: List<Movie>) : RecyclerView.Adapter<Fa
             imageView.load(movie.srcImage) {
                 placeholder(R.drawable.image1)
                 error(R.drawable.image1)
+            }
+            removeButton.setOnClickListener {
+                onRemoveClick(movie) // Appeler le callback pour supprimer le film
             }
         }
     }
