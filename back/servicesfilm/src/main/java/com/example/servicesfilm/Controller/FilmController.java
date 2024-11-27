@@ -1,6 +1,7 @@
 package com.example.servicesfilm.Controller;
 
 import com.example.servicesfilm.Entity.Category;
+import com.example.servicesfilm.Entity.MovieRequest;
 import com.example.servicesfilm.Entity.film;
 import com.example.servicesfilm.Repository.FilmRepository;
 import com.example.servicesfilm.service.filmService;
@@ -63,7 +64,13 @@ public class FilmController {
         return filmService.searchByAll(keyword);
     }
 
+    @PostMapping("/add")
+    public ResponseEntity<film> addMovie(@RequestBody film movie) {
+        // Log des données reçues
+        System.out.println("Données reçues: " + movie);
 
-
-
+        // Traitement de l'ajout du film
+     filmService.addMovie(movie);
+        return ResponseEntity.ok(movie);
+    }
 }

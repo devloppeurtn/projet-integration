@@ -12,10 +12,15 @@ import kotlinx.serialization.json.Json
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import android.os.Parcelable
-import kotlinx.serialization.SerialName
+import io.ktor.client.statement.HttpResponse
+import io.ktor.http.ContentType
+import io.ktor.http.contentType
+import io.ktor.http.isSuccess
+import kotlinx.serialization.Serializable
 
 // Définir la classe de données Movie en tant que Parcelable pour une compatibilité avec RecyclerView
 @Parcelize
+@Serializable
 data class Movie(
     val id: Int,
     val title: String,
@@ -72,6 +77,33 @@ suspend fun searchMovies(url: String): List<Movie> {
         emptyList()
     }
 }
+suspend fun addMovie(movie: Movie): HttpResponse {
+    val apiUrl = "http://10.0.2.2:8081/api/films/add"  // URL de l'API
+    Log.d("AddMovie", "Données envoyées: $movie")
+
+    return try {
+        val gson = Gson()
+        val movieJson = gson.toJson(movie)  // Sérialiser l'objet Movie en JSON
+
+        // Effectuer l'appel POST avec Ktor
+        val response = client.post(apiUrl) {
+            contentType(ContentType.Application.Json)
+            setBody(movieJson)  // Envoi du JSON
+        }
+
+        if (response.status.isSuccess()) {
+            Log.d("AddMovie", "Film ajouté avec succès : ${response.bodyAsText()}")
+        } else {
+            Log.e("AddMovie", "Erreur lors de l'ajout du film : ${response.status}")
+        }
+        response  // Retourner la réponse de l'API
+    } catch (e: Exception) {
+        Log.e("AddMovie", "Erreur lors de l'ajout du film : ${e.message}")
+        throw e  // Rejeter l'exception pour la gestion dans la coroutine
+    }
+}
+
+
 
 
 // Exemple de fonction principale pour tester les fonctionnalités

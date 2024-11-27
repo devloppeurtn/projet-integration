@@ -1,5 +1,6 @@
 package com.example.servicesfilm.service;
 
+import com.example.servicesfilm.Entity.MovieRequest;
 import com.example.servicesfilm.Entity.film;
 import com.example.servicesfilm.Repository.FilmCustomRepository;
 import com.example.servicesfilm.Repository.FilmRepository;
@@ -42,6 +43,24 @@ public class filmService {
     }
     public List<film> searchByAll(String keyword) {
         return customRepository.searchByAllCriteria(keyword);
+    }
+    public film addMovie(film movie) {
+        // Créer une nouvelle entité film
+        film newMovie = new film();
+
+        // Mapper les propriétés de l'objet Movie à l'entité film
+        newMovie.setTitle(movie.getTitle());
+        newMovie.setDescription(movie.getDescription());
+        newMovie.setReleaseYear(movie.getReleaseYear());
+        newMovie.setSrcImage(movie.getSrcImage());
+        newMovie.setSrcTrailler(movie.getSrcTrailler());
+        newMovie.setCategory(movie.getCategory()); // Assurez-vous que le type de 'Category' est compatible avec le champ dans 'film'
+        newMovie.setVote_average(movie.getVote_average());
+        newMovie.setProductionCompanyNames(movie.getProductionCompanyNames());
+        newMovie.setProductionCompanyLogos(movie.getProductionCompanyLogos());
+        newMovie.setId(movie.getId());
+        // Sauvegarder l'entité film dans la base de données
+        return filmRepository.save(newMovie);
     }
 
 }

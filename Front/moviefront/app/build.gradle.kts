@@ -1,9 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.8.0"  // Correspond à kotlinx-serialization
     id("kotlin-kapt") // Activation du plugin kapt
     id("kotlin-parcelize")
+
+    kotlin("plugin.serialization") version "1.8.0" // Ensure both Kotlin and the serialization plugin are updated
 }
 
 android {
@@ -62,9 +63,11 @@ dependencies {
     implementation("io.ktor:ktor-client-serialization:2.3.0")
     implementation("io.ktor:ktor-client-content-negotiation:2.3.0")
     implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
     implementation("com.google.code.gson:gson:2.8.9")
     implementation("io.coil-kt:coil:2.1.0")
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("androidx.recyclerview:recyclerview:1.3.2")}
+    implementation ("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("io.ktor:ktor-client-serialization:2.3.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1") // Pour la sérialisation JSON avec Kotlin
+}
