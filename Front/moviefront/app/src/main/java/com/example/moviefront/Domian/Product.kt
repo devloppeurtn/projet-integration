@@ -8,4 +8,4 @@ data class Product(
     val price: Double,
     val description: String,// You can use drawable resources for product images
     var quantity: Int = 1
-)//cart movi
+)//cart movie

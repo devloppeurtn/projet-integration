@@ -27,7 +27,7 @@ class CartAdapter(private val cartItems: List<Product>) : RecyclerView.Adapter<C
 
     override fun getItemCount(): Int {
         return cartItems.size
-    }//cart movi
+    }//cart movie
 
     class CartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val productImage: ImageView = itemView.findViewById(R.id.cartItemImage) // Utilisez le bon ID d'image

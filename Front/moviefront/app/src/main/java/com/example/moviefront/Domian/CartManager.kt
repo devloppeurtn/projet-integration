@@ -34,5 +34,5 @@ object CartManager {
     // Obtenir le nombre total d'articles dans le panier
     fun getItemCount(): Int {
         return cartItems.sumOf { it.quantity }
-    }//cart movi
+    }//cart movie
 }

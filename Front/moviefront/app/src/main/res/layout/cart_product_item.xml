@@ -32,5 +32,5 @@
             android:text="₹0.00"
             android:textAppearance="@style/TextAppearance.AppCompat.Title" />
     </LinearLayout>
-    <!-- Ligne pour afficher le sous-total des articles -->
+    <!-- Ligne pour afficher le sous-total des article -->
 </LinearLayout>

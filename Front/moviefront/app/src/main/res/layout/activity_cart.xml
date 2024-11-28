@@ -68,6 +68,6 @@
             android:textColor="@color/white"
             android:textAllCaps="false" />
     </LinearLayout>
-    <!-- Ligne pour afficher le sous-total des articles -->
+    <!-- Ligne pour afficher le sous-total des article -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

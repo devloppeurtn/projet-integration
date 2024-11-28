@@ -98,7 +98,7 @@ class product_detail : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     private fun updateQuantity() {
         weightText.text = "$quantity pcs"
-    }////cart movi
+    }////cart movie
 
     @SuppressLint("DefaultLocale", "SetTextI18n")
     private fun updatePrice() {

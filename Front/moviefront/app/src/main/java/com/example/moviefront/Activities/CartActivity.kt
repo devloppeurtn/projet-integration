@@ -39,7 +39,7 @@ class CartActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         val cartItems = CartManager.getCartItems()
         recyclerView.adapter = CartAdapter(cartItems)
-    }//cart movi
+    }//cart movie
 
     private fun updateTotalPrice() {
         val totalPrice = CartManager.getCartTotalPrice()
