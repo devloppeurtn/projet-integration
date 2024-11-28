@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@android:color/white"
+    android:gravity="center"
+    android:weightSum="1">
+
+    <!-- Titre centré avec une police moderne -->
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Supprimer un Film"
+        android:textSize="30sp"
+        android:textColor="#333333"
+        android:layout_marginBottom="40dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:fontFamily="sans-serif-medium"/>
+
+    <!-- Champ de saisie de l'ID du film -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp">
+
+        <EditText
+            android:id="@+id/filmIdInput"
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
+            android:background="@drawable/edit_text_bg"
+            android:fontFamily="sans-serif-light"
+            android:hint="Entrez l'ID du film"
+            android:inputType="number"
+            android:padding="16dp"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Bouton pour supprimer le film -->
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Supprimer"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_bg"
+        android:layout_marginBottom="24dp"
+        android:textSize="18sp"
+        android:padding="16dp"
+        android:fontFamily="sans-serif-medium"/>
+
+    <!-- Message de résultat après la suppression -->
+    <TextView
+        android:id="@+id/resultMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="#FF5722"
+        android:textSize="16sp"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:padding="10dp"
+        android:background="@drawable/result_message_bg"
+        android:fontFamily="sans-serif-medium" />
+
+</LinearLayout>

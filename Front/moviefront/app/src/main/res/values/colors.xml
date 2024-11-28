@@ -8,7 +8,10 @@
     <color name="dark_blue">#252836</color>
     <color name="black2">#231F1F</color>
     <color name="primaryColor">#6200EE</color>
-
+    <color name="colorPrimaryy">#FF4081</color> <!-- Rose vif -->
+    <color name="colorAccentt">#FF80AB</color> <!-- Accent rose pâle -->
+    <color name="colorSuccess">#00C853</color> <!-- Vert succès -->
+    <color name="colorErrorr">#D32F2F</color> <!-- Rouge d'erreur -->
     <color name="colorPrimary">#007BFF</color> <!-- Bleu principal pour le titre et les boutons -->
     <color name="colorPrimaryDark">#0056b3</color> <!-- Bleu plus foncé pour la barre de statut et les arrière-plans -->
     <color name="colorAccent">#FF4081</color> <!-- Couleur d'accent (rose vif pour les boutons et éléments interactifs) -->

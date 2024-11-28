@@ -20,7 +20,12 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}" // Exclure les fichiers de licence courants
+            excludes += "META-INF/androidx.cardview_cardview.version" // Résoudre ce conflit spécifique
+        }
+    }
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -42,7 +47,8 @@ android {
 dependencies {
     // Dépendances de Glide
     implementation("com.github.bumptech.glide:glide:4.15.0")
-    implementation(libs.play.services.maps) // Mise à jour de Glide
+    implementation(libs.play.services.maps)
+    implementation(libs.cardview.v7) // Mise à jour de Glide
     kapt("com.github.bumptech.glide:compiler:4.15.0") // Assurez-vous que kapt est activé
 
     // Autres dépendances

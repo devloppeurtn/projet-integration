@@ -5,11 +5,12 @@ import com.example.servicesfilm.Entity.film;
 import com.example.servicesfilm.Repository.FilmCustomRepository;
 import com.example.servicesfilm.Repository.FilmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.aggregation.ArrayOperators;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ReflectionUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.lang.reflect.Field;
+import java.util.*;
 
 @Service
 public class filmService {
@@ -63,4 +64,29 @@ public class filmService {
         return filmRepository.save(newMovie);
     }
 
+
+    public film updateFilmById(Integer id, Map<String, Object> updates) {
+        // Récupérer le film par ID
+        film film = filmRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Film not found with id: " + id));
+
+        // Appliquer les modifications aux champs
+        updates.forEach((key, value) -> {
+            Field field = ReflectionUtils.findField(film.class, key);
+            if (field != null) {
+                field.setAccessible(true);
+                ReflectionUtils.setField(field, film, value);
+            } });
+
+        // Enregistrer les modifications
+        return filmRepository.save(film);
+    }
+
+    public boolean deleteFilmById(int id) {
+        if (filmRepository.existsById(id)) {
+            filmRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 }

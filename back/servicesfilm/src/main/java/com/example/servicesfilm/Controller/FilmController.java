@@ -6,10 +6,13 @@ import com.example.servicesfilm.Entity.film;
 import com.example.servicesfilm.Repository.FilmRepository;
 import com.example.servicesfilm.service.filmService;
 import com.example.servicesfilm.service.tmdbservices;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/films")
@@ -73,4 +76,34 @@ public class FilmController {
      filmService.addMovie(movie);
         return ResponseEntity.ok(movie);
     }
+
+
+    @PatchMapping("/modifier/{id}")
+    public ResponseEntity<?> updateFilmById(
+            @PathVariable Integer id,
+            @RequestBody Map<String, Object> updates) {
+        try {
+            film updatedFilm = filmService.updateFilmById(id, updates);
+            return ResponseEntity.ok(updatedFilm);
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Film not found with id: " + id);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error: " + e.getMessage());
+        }
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteFilmById(@PathVariable("id") int id) {
+        try {
+            boolean isDeleted = filmService.deleteFilmById(id);
+            if (isDeleted) {
+                return ResponseEntity.ok("Film supprimé avec succès.");
+            } else {
+                return ResponseEntity.status(404).body("Film non trouvé.");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Erreur lors de la suppression du film : " + e.getMessage());
+        }
+    }
+
 }

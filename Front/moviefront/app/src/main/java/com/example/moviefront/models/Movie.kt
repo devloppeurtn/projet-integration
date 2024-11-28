@@ -105,6 +105,43 @@ suspend fun addMovie(movie: Movie): HttpResponse {
 
 
 
+// Fonction pour supprimer un film par son ID
+suspend fun deleteMovieById(movieId: Int): HttpResponse {
+    val apiUrl = "http://10.0.2.2:8081/api/films/delete/$movieId"  // URL de l'API avec l'ID du film
+
+    return try {
+        // Effectuer l'appel DELETE avec Ktor
+        val response = client.delete(apiUrl) {
+            contentType(ContentType.Application.Json)
+        }
+
+        if (response.status.isSuccess()) {
+            Log.d("DeleteMovie", "Film supprimé avec succès : ${response.bodyAsText()}")
+        } else {
+            Log.e("DeleteMovie", "Erreur lors de la suppression du film : ${response.status}")
+        }
+        response  // Retourner la réponse de l'API
+    } catch (e: Exception) {
+        Log.e("DeleteMovie", "Erreur lors de la suppression du film : ${e.message}")
+        throw e  // Rejeter l'exception pour la gestion dans la coroutine
+    }
+}
+
+// Exemple de fonction principale pour tester les fonctionnalités
+suspend fun main() {
+    try {
+        // Test de la suppression d'un film par ID
+        val movieIdToDelete = 1  // ID du film à supprimer
+        val deleteResponse = deleteMovieById(movieIdToDelete)
+        if (deleteResponse.status.isSuccess()) {
+            println("Film supprimé avec succès")
+        }
+
+    } catch (e: Exception) {
+        println("Erreur lors de la suppression du film : ${e.message}")
+    } finally {
+        client.close()
+    }
 
 // Exemple de fonction principale pour tester les fonctionnalités
 suspend fun main() {
@@ -123,4 +160,4 @@ suspend fun main() {
     } finally {
         client.close()
     }
-}
+}}
