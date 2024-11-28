@@ -24,7 +24,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".Activities.deletemovie"
+            android:name=".Activities.homeadmin"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,10 +33,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.Modify"
+            android:name=".Activities.deletemovie"
             android:exported="true">
 
         </activity>
+        <activity
+            android:name=".Activities.Modify"
+            android:exported="true"></activity>
         <activity
             android:name=".Activities.Addmovie"
             android:exported="true" />
@@ -68,7 +71,7 @@
             android:exported="true" />
         <activity
             android:name=".Activities.ShoppingFragment"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".Activities.ForgotPasswordActivity"
             android:exported="true" />
