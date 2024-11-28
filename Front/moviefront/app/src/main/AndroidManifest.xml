@@ -86,7 +86,6 @@
             android:exported="true" />
         <activity android:name=".Activities.CartActivity"
             android:exported="true">
-
         </activity>
     </application>
 
