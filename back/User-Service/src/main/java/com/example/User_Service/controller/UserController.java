@@ -1,5 +1,8 @@
 package com.example.User_Service.controller;
 
+import com.example.User_Service.dto.ForgotPasswordRequest;
+import com.example.User_Service.dto.LoginRequest;
+import com.example.User_Service.dto.ResetPasswordRequest;
 import com.example.User_Service.entity.*;
 import com.example.User_Service.service.EmailService;
 import com.example.User_Service.service.UserService;
@@ -16,6 +19,15 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getUserById(@PathVariable("id") String userId) {
+        try {
+            User user = userService.getUserById(userId);
+            return ResponseEntity.ok(user);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
 
     @PostMapping("/register")
     public User register(@RequestBody User user) {

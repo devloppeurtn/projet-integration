@@ -45,6 +45,10 @@ public class UserService {
 
         return userRepository.save(user);
     }
+    public User getUserById(String userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found with id: " + userId));
+    }
 
     public User loginUser(String email, String password) {
         User user = userRepository.findByEmail(email);
