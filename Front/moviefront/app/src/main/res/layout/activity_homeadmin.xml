@@ -60,6 +60,7 @@
                 android:textColor="@color/black" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+    <!-- Card: Delete Movie -->
 
     <!-- Card: Delete Movie -->
     <androidx.cardview.widget.CardView
