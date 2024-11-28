@@ -273,4 +273,5 @@
             app:layout_constraintStart_toStartOf="@+id/textView27"
             tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Ligne pour afficher le sous-total des articles -->
 </androidx.constraintlayout.widget.ConstraintLayout>
