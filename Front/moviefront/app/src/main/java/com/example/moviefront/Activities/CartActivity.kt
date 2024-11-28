@@ -25,6 +25,7 @@ class CartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart)
+        // Initialisation des vues
 
         // Initialisation des vues
         recyclerView = findViewById(R.id.rvCartItems)
