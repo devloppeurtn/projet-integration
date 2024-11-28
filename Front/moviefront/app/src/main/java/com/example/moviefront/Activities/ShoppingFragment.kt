@@ -15,10 +15,12 @@ class ShoppingFragment : AppCompatActivity() {
     private lateinit var adapter: ProductAdapter
     private lateinit var progressBar: ProgressBar
     private lateinit var recyclerView: RecyclerView
+    private lateinit var btnpanier: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shopping_fragment)
+        btnpanier = findViewById(R.id.panier)
 
         progressBar = findViewById(R.id.progressBarPr)
         recyclerView = findViewById(R.id.productview)
@@ -26,6 +28,11 @@ class ShoppingFragment : AppCompatActivity() {
         setupRecyclerView()
 
         loadProducts() // Appelle la fonction ici
+        btnpanier.setOnClickListener {
+            val intent = Intent(this, CartActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private fun setupRecyclerView() {

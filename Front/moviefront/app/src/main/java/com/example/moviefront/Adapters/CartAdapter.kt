@@ -4,35 +4,63 @@ package com.example.moviefront.Adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.moviefront.Domian.CartItem
 import com.example.moviefront.Domian.Product
 import com.example.moviefront.R
 
-class CartAdapter(private val cartItems: List<Product>) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
+class CartAdapter(
+    private val cartItems: List<CartItem>,
+    private val onQuantityChange: (CartItem) -> Unit
+) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
+
+    inner class CartViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val productImage: ImageView = view.findViewById(R.id.ivCartProduct)
+        val productName: TextView = view.findViewById(R.id.tvCartProductName)
+        val productPrice: TextView = view.findViewById(R.id.tvCartProductPrice)
+        val productSize: TextView = view.findViewById(R.id.tvCartProductSize)
+        val quantity: TextView = view.findViewById(R.id.tvCartItemCount)
+        val addButton: Button = view.findViewById(R.id.btnCartItemAdd)
+        val minusButton: Button = view.findViewById(R.id.btnCartItemMinus)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.cart_item, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.cartproduct_item, parent, false)
         return CartViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
-        val product = cartItems[position]
-        holder.productTitle.text = product.name  // Assurez-vous d'utiliser le bon nom pour votre produit
-        holder.productPrice.text = "₹${String.format("%.2f", product.price)}"
-        holder.productQuantity.text = "Qty: ${product.quantity}"
-        holder.productImage.setImageResource(product.imageResId)  // Assurez-vous de mettre l'ID d'image correct
+        val item = cartItems[position]
+
+        // Charger l'image depuis une URL
+        Glide.with(holder.itemView.context)
+            .load(item.productImageUrl)
+            .into(holder.productImage)
+
+        holder.productName.text = item.productName
+        holder.productPrice.text = "₹${item.productPrice}"
+        holder.productSize.text = item.productSize
+        holder.quantity.text = item.quantity.toString()
+
+        holder.addButton.setOnClickListener {
+            item.quantity++
+            onQuantityChange(item)
+            notifyItemChanged(position)
+        }
+
+        holder.minusButton.setOnClickListener {
+            if (item.quantity > 1) {
+                item.quantity--
+                onQuantityChange(item)
+                notifyItemChanged(position)
+            }
+        }
     }
 
-    override fun getItemCount(): Int {
-        return cartItems.size
-    }//cart movie
-
-    class CartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val productImage: ImageView = itemView.findViewById(R.id.cartItemImage) // Utilisez le bon ID d'image
-        val productTitle: TextView = itemView.findViewById(R.id.cartItemName)  // Assurez-vous de renommer en conséquence
-        val productPrice: TextView = itemView.findViewById(R.id.cartItemPrice)  // ID du prix dans le layout
-        val productQuantity: TextView = itemView.findViewById(R.id.cartItemQuantity)  // ID de la quantité
-    }
+    override fun getItemCount(): Int = cartItems.size
 }

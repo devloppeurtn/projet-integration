@@ -76,19 +76,20 @@
                     tools:ignore="Autofill,HardcodedText,TextFields" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/panierr"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginStart="8dp"
                     android:background="@drawable/seting_bg">
 
                     <ImageView
-                        android:id="@+id/imageView9"
+                        android:id="@+id/panier"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/settings"
                         tools:ignore="ContentDescription" />
                 </androidx.constraintlayout.widget.ConstraintLayout>

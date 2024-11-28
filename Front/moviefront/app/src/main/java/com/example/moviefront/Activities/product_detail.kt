@@ -5,8 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.moviefront.Domian.CartItem
 import com.example.moviefront.Domian.CartManager
-import com.example.moviefront.Domian.Product
 import com.example.moviefront.R
 
 class product_detail : AppCompatActivity() {
@@ -76,29 +76,33 @@ class product_detail : AppCompatActivity() {
                 updateTotalPrice()
             }
         }
+
         addToCartButton.setOnClickListener {
-            val product = Product(
-                id = productId,
-                name = productName ?: "Unknown",
-                imageResId = productImageResId,
-                price = unitPrice * quantity,
-                description = productDescription ?: "No description"
+            // Créez un CartItem avec les informations du produit
+            val cartItem = CartItem(
+                productName = productName ?: "Unknown Product", // Nom du produit
+                productPrice = unitPrice, // Prix du produit
+                productSize = "Default Size", // Vous pouvez adapter cela si vous avez des tailles de produit
+                productImageUrl = productImageResId.toString(), // Vous pouvez stocker l'URL ou l'ID de l'image
+                quantity = quantity // Quantité sélectionnée
             )
-            CartManager.addToCart(product)
 
-            // Rafraîchissement du RecyclerView dans la CartActivity
-            Toast.makeText(this, "${product.name} added to cart", Toast.LENGTH_SHORT).show()
+            // Ajouter l'article au panier
+            CartManager.addItemToCart(cartItem)
 
-            // Redirection vers l'écran du panier
-            val intent = Intent(this, CartActivity::class.java)
-            startActivity(intent)
+            // Afficher un message de confirmation
+            Toast.makeText(this, "$productName ajouté au panier", Toast.LENGTH_SHORT).show()
+
+            // Facultatif : Vous pouvez rediriger l'utilisateur vers la page du panier si vous le souhaitez
+            // val intent = Intent(this, CartActivity::class.java)
+            // startActivity(intent)
         }
     }
 
     @SuppressLint("SetTextI18n")
     private fun updateQuantity() {
         weightText.text = "$quantity pcs"
-    }////cart movie
+    }
 
     @SuppressLint("DefaultLocale", "SetTextI18n")
     private fun updatePrice() {
