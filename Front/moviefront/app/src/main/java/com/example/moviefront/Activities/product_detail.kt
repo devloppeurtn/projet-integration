@@ -1,9 +1,12 @@
 package com.example.moviefront.Activities
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.moviefront.Domian.CartManager
+import com.example.moviefront.Domian.Product
 import com.example.moviefront.R
 
 class product_detail : AppCompatActivity() {
@@ -28,7 +31,7 @@ class product_detail : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_detail)
 
-        // Initialize views
+        // Initialisation des vues
         backButton = findViewById(R.id.backbtn)
         favoriteButton = findViewById(R.id.favBtn)
         productImage = findViewById(R.id.img)
@@ -43,22 +46,23 @@ class product_detail : AppCompatActivity() {
         addToCartButton = findViewById(R.id.Addbtn)
         totalPriceText = findViewById(R.id.totalTxt)
 
-        // Get data from intent
+        // Récupérer les données de l'intent
+        val productId = intent.getStringExtra("product_id") ?: "default_id"
         val productName = intent.getStringExtra("product_name")
         val productImageResId = intent.getIntExtra("product_image", 0)
         unitPrice = intent.getDoubleExtra("product_price", 10.0)
         val productDescription = intent.getStringExtra("product_description")
 
-        // Set data to views
+        // Mettre les données dans les vues
         titleText.text = productName
         productImage.setImageResource(productImageResId)
         descriptionText.text = productDescription
 
-        // Update price and total price
+        // Mettre à jour le prix et le total
         updatePrice()
         updateTotalPrice()
 
-        // Set up button actions (back, add to cart, etc.)
+        // Actions des boutons
         backButton.setOnClickListener { finish() }
         plusButton.setOnClickListener {
             quantity++
@@ -73,7 +77,21 @@ class product_detail : AppCompatActivity() {
             }
         }
         addToCartButton.setOnClickListener {
-            Toast.makeText(this, "Added to cart", Toast.LENGTH_SHORT).show()
+            val product = Product(
+                id = productId,
+                name = productName ?: "Unknown",
+                imageResId = productImageResId,
+                price = unitPrice * quantity,
+                description = productDescription ?: "No description"
+            )
+            CartManager.addToCart(product)
+
+            // Rafraîchissement du RecyclerView dans la CartActivity
+            Toast.makeText(this, "${product.name} added to cart", Toast.LENGTH_SHORT).show()
+
+            // Redirection vers l'écran du panier
+            val intent = Intent(this, CartActivity::class.java)
+            startActivity(intent)
         }
     }
 
