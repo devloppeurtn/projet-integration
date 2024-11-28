@@ -1,4 +1,4 @@
-package com.example.servicesfilm;
+package com.example.servicesfilm.config;
 
 
 import org.springframework.context.annotation.Bean;
