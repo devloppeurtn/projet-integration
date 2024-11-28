@@ -1,4 +1,4 @@
-package com.example.User_Service.entity;
+package com.example.User_Service.dto;
 
 import lombok.Getter;
 import lombok.Setter;

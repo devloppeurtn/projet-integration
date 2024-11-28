@@ -1,5 +1,8 @@
 package com.example.User_Service.controller;
 
+import com.example.User_Service.dto.ForgotPasswordRequest;
+import com.example.User_Service.dto.LoginRequest;
+import com.example.User_Service.dto.ResetPasswordRequest;
 import com.example.User_Service.entity.*;
 import com.example.User_Service.service.EmailService;
 import com.example.User_Service.service.UserService;
