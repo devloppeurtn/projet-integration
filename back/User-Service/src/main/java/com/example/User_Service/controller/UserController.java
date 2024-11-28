@@ -19,6 +19,15 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getUserById(@PathVariable("id") String userId) {
+        try {
+            User user = userService.getUserById(userId);
+            return ResponseEntity.ok(user);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
 
     @PostMapping("/register")
     public User register(@RequestBody User user) {
