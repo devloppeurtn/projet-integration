@@ -85,11 +85,9 @@ class product_detail : AppCompatActivity() {
                 description = productDescription ?: "No description"
             )
             CartManager.addToCart(product)
-
-            // Rafraîchissement du RecyclerView dans la CartActivity
+            
             Toast.makeText(this, "${product.name} added to cart", Toast.LENGTH_SHORT).show()
 
-            // Redirection vers l'écran du panier
             val intent = Intent(this, CartActivity::class.java)
             startActivity(intent)
         }
