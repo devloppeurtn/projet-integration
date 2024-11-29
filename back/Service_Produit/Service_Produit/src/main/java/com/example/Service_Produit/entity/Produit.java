@@ -9,13 +9,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @Document(collection = "produits")
 public class Produit {
-    // Getters et Setters
     @Id
-    private String id;
-    private String nom;
-    private String description;
-    private double prix;
-    private int quantiteEnStock;
+    private String id; // Correspond à 'id' en Kotlin
+    private String name; // Correspond à 'name' en Kotlin
+    private String description; // Correspond à 'description' en Kotlin
+    private double price; // Correspond à 'price' en Kotlin
+    private String imageResId; // Correspond à 'imageResId' en Kotlin
+    private int quantity; // Correspond à 'quantity' en Kotlin
 
 }
 

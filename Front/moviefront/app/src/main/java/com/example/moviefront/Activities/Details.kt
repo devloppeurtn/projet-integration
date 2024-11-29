@@ -112,7 +112,7 @@ class Details : AppCompatActivity() {
      */
     private fun addToFavorites(movieId: String , userEmail:String) {
          // Remplacez par l'email de l'utilisateur connecté
-        val call = RetrofitInstance.api.addToFavorites(userEmail, movieId)
+        val call = RetrofitInstance.apiUser.addToFavorites(userEmail, movieId)
 
         call.enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {

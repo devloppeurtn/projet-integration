@@ -6,6 +6,9 @@ object CartManager {
     fun addItemToCart(item: CartItem) {
         cartItems.add(item)
     }
+    fun removeItemFromCart(item: CartItem) {
+        cartItems.remove(item)  // Retirer l'article spécifié du panier
+    }
 
     fun getCartItems(): List<CartItem> {
         return cartItems

@@ -53,7 +53,7 @@
         android:id="@+id/tvSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Size : "
+        android:text="quantity : "
         app:layout_constraintStart_toStartOf="@id/tvCartProductPrice"
         app:layout_constraintTop_toBottomOf="@id/tvCartProductPrice" />
 
@@ -67,13 +67,25 @@
         app:layout_constraintStart_toEndOf="@id/tvSize"
         app:layout_constraintBottom_toBottomOf="@id/tvSize" />
 
+
+    <ImageView
+        android:id="@+id/remove"
+        android:layout_width="44dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="@+id/tvSize"
+        app:layout_constraintTop_toBottomOf="@+id/tvSize"
+        app:srcCompat="@drawable/ic_remove" />
+
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="10dp"
         app:layout_constraintStart_toEndOf="@id/guideline6"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/tvCartProductName">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnCartItemAdd"
@@ -106,7 +118,6 @@
 
 
     </LinearLayout>
-
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"

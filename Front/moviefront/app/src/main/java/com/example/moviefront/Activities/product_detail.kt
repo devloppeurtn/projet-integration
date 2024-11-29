@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.example.moviefront.Domian.CartItem
 import com.example.moviefront.Domian.CartManager
 import com.example.moviefront.R
@@ -49,14 +50,17 @@ class product_detail : AppCompatActivity() {
         // Récupérer les données de l'intent
         val productId = intent.getStringExtra("product_id") ?: "default_id"
         val productName = intent.getStringExtra("product_name")
-        val productImageResId = intent.getIntExtra("product_image", 0)
+        val productImageResId = intent.getStringExtra("product_image")
         unitPrice = intent.getDoubleExtra("product_price", 10.0)
         val productDescription = intent.getStringExtra("product_description")
 
         // Mettre les données dans les vues
         titleText.text = productName
-        productImage.setImageResource(productImageResId)
-        descriptionText.text = productDescription
+
+// Utiliser Glide pour charger l'image à partir de l'URL
+        Glide.with(this)
+            .load(productImageResId)  // Ici vous passez l'URL de l'image
+            .into(productImage)  // Le ImageView où vous voulez afficher l'image        descriptionText.text = productDescription
 
         // Mettre à jour le prix et le total
         updatePrice()
@@ -78,25 +82,34 @@ class product_detail : AppCompatActivity() {
         }
 
         addToCartButton.setOnClickListener {
-            // Créez un CartItem avec les informations du produit
-            val cartItem = CartItem(
-                productName = productName ?: "Unknown Product", // Nom du produit
-                productPrice = unitPrice, // Prix du produit
-                productSize = "Default Size", // Vous pouvez adapter cela si vous avez des tailles de produit
-                productImageUrl = productImageResId.toString(), // Vous pouvez stocker l'URL ou l'ID de l'image
-                quantity = quantity // Quantité sélectionnée
-            )
+            // Vérifiez si le produit est déjà dans le panier
+            val existingProduct = CartManager.getCartItems().find { it.productName == productName }
 
-            // Ajouter l'article au panier
-            CartManager.addItemToCart(cartItem)
+            if (existingProduct != null) {
+                // Si le produit est déjà dans le panier, affichez un message
+                Toast.makeText(this, "$productName est déjà dans le panier", Toast.LENGTH_SHORT).show()
+            } else {
+                // Si le produit n'est pas dans le panier, ajoutez-le
+                val cartItem = CartItem(
+                    productName = productName ?: "Unknown Product", // Nom du produit
+                    productPrice = unitPrice, // Prix du produit
+                    productSize = "Default Size", // Vous pouvez adapter cela si vous avez des tailles de produit
+                    productImageUrl = productImageResId.toString(), // Vous pouvez stocker l'URL ou l'ID de l'image
+                    quantity = quantity // Quantité sélectionnée
+                )
 
-            // Afficher un message de confirmation
-            Toast.makeText(this, "$productName ajouté au panier", Toast.LENGTH_SHORT).show()
+                // Ajouter l'article au panier
+                CartManager.addItemToCart(cartItem)
 
-            // Facultatif : Vous pouvez rediriger l'utilisateur vers la page du panier si vous le souhaitez
-            // val intent = Intent(this, CartActivity::class.java)
-            // startActivity(intent)
+                // Afficher un message de confirmation
+                Toast.makeText(this, "$productName ajouté au panier", Toast.LENGTH_SHORT).show()
+
+                // Facultatif : Vous pouvez rediriger l'utilisateur vers la page du panier si vous le souhaitez
+                // val intent = Intent(this, CartActivity::class.java)
+                // startActivity(intent)
+            }
         }
+
     }
 
     @SuppressLint("SetTextI18n")

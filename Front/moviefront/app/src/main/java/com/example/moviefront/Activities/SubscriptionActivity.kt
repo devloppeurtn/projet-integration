@@ -45,7 +45,7 @@ class SubscriptionActivity : AppCompatActivity() {
                     Toast.makeText(this, "L'email est requis", Toast.LENGTH_SHORT).show()
                 } else {
                     // Appel API via RetrofitInstance pour s'abonner
-                    RetrofitInstance.api.subscribeToPremium(userEmail).enqueue(object : Callback<User> {
+                    RetrofitInstance.apiUser.subscribeToPremium(userEmail).enqueue(object : Callback<User> {
                         override fun onResponse(call: Call<User>, response: Response<User>) {
                             if (response.isSuccessful && response.body() != null) {
                                 val user = response.body()!!

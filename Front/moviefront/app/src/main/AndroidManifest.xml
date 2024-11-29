@@ -24,18 +24,17 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Activities.passercommande"
+            android:exported="false" />
+        <activity
             android:name=".Activities.homeadmin"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".Activities.deletemovie"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".Activities.Modify"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".Activities.Addmovie"
             android:exported="true" />
@@ -67,11 +66,13 @@
             android:exported="true" />
         <activity
             android:name=".Activities.ShoppingFragment"
-            android:exported="true" > <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <category android:name="android.intent.category.LAUNCHER" />
-    </intent-filter></activity>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Activities.ForgotPasswordActivity"
             android:exported="true" />
@@ -84,10 +85,9 @@
         <activity
             android:name=".Activities.product_detail"
             android:exported="true" />
-        <activity android:name=".Activities.CartActivity"
-            android:exported="true">
-        </activity>
-
+        <activity
+            android:name=".Activities.CartActivity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>

@@ -34,7 +34,7 @@ class RegisterActivity : AppCompatActivity() {
             val password = passwordEditText.text.toString()
 
             val user = User(name = name, email = email, password = password)
-            RetrofitInstance.api.registerUser(user).enqueue(object : Callback<User> {
+            RetrofitInstance.apiUser.registerUser(user).enqueue(object : Callback<User> {
                 override fun onResponse(call: Call<User>, response: Response<User>) {
                     if (response.isSuccessful) {
                         Toast.makeText(this@RegisterActivity, "Inscription réussie", Toast.LENGTH_SHORT).show()

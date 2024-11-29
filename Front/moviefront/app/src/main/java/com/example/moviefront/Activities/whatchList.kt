@@ -78,7 +78,7 @@ class whatchList : AppCompatActivity() {
     private fun getFavoriteMovies(userEmail: String) {
         progressBar7.visibility = View.VISIBLE
 
-        val call = RetrofitInstance.api.getFavoriteMovies(userEmail)
+        val call = RetrofitInstance.apiUser.getFavoriteMovies(userEmail)
 
         call.enqueue(object : Callback<List<Movie>> {
             override fun onResponse(call: Call<List<Movie>>, response: Response<List<Movie>>) {
@@ -102,7 +102,7 @@ class whatchList : AppCompatActivity() {
         })
     }
     private fun removeFavoriteMovie(userEmail: String, movie: Movie) {
-        val call = RetrofitInstance.api.removeFavoriteMovie(userEmail, movie.id.toString())
+        val call = RetrofitInstance.apiUser.removeFavoriteMovie(userEmail, movie.id.toString())
 
         call.enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {

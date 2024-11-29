@@ -14,8 +14,9 @@ import com.example.moviefront.Domian.Product
 import com.example.moviefront.R
 
 class CartAdapter(
-    private val cartItems: List<CartItem>,
-    private val onQuantityChange: (CartItem) -> Unit
+    private val cartItems: MutableList<CartItem>,  // Utiliser MutableList pour pouvoir le modifier
+    private val onQuantityChange: (CartItem) -> Unit,
+    private val onItemRemove: (CartItem) -> Unit
 ) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
     inner class CartViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -26,6 +27,8 @@ class CartAdapter(
         val quantity: TextView = view.findViewById(R.id.tvCartItemCount)
         val addButton: Button = view.findViewById(R.id.btnCartItemAdd)
         val minusButton: Button = view.findViewById(R.id.btnCartItemMinus)
+        val removeButton: ImageView = view.findViewById(R.id.remove)  // Le bouton de suppression
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
@@ -59,6 +62,12 @@ class CartAdapter(
                 onQuantityChange(item)
                 notifyItemChanged(position)
             }
+        }
+        // Lors du clic sur le bouton de suppression
+        holder.removeButton.setOnClickListener {
+            onItemRemove(item)  // Appeler le callback pour supprimer l'élément
+            cartItems.removeAt(position)  // Supprimer de la liste locale
+            notifyItemRemoved(position)  // Notifier l'adaptateur de la suppression
         }
     }
 

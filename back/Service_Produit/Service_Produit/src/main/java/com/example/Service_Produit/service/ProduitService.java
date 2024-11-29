@@ -35,13 +35,20 @@ public class ProduitService {
     }
 
     public Produit modifierProduit(String id, Produit produitMisAJour) {
-        Produit produitExistant = obtenirProduitParId(id);
-        produitExistant.setNom(produitMisAJour.getNom());
+        // Récupérer le produit existant
+        Produit produitExistant = produitRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Produit avec ID " + id + " introuvable"));
+
+        // Mettre à jour les informations du produit
+        produitExistant.setName(produitMisAJour.getName());
         produitExistant.setDescription(produitMisAJour.getDescription());
-        produitExistant.setPrix(produitMisAJour.getPrix());
-        produitExistant.setQuantiteEnStock(produitMisAJour.getQuantiteEnStock());
+        produitExistant.setPrice(produitMisAJour.getPrice());
+        produitExistant.setQuantity(produitMisAJour.getQuantity());  // N'oubliez pas de renommer "quantiteEnStock" en "quantity" si vous avez changé le nom du champ
+
+        // Sauvegarder et retourner le produit mis à jour
         return produitRepository.save(produitExistant);
     }
+
 
     public void supprimerProduit(String id) {
         Produit produit = obtenirProduitParId(id);
@@ -53,7 +60,7 @@ public class ProduitService {
                 .orElseThrow(() -> new IllegalArgumentException("Produit non trouvé"));
 
         // Mettre à jour la quantité en stock
-        produit.setQuantiteEnStock(nouvelleQuantite);
+        produit.setQuantity(nouvelleQuantite);
 
         // Sauvegarder les modifications dans la base de données
         produitRepository.save(produit);

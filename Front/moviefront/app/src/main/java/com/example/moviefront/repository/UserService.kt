@@ -17,6 +17,11 @@ import retrofit2.http.Query
 
 
 interface UserService {
+
+
+
+
+
     @DELETE("users/{email}/deletefavorite/{movieId}")
     fun removeFavoriteMovie(
         @Path("email") email: String,

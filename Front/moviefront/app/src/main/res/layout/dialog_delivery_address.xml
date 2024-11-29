@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Champ pour entrer l'adresse -->
+    <EditText
+        android:id="@+id/editTextDialogAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Entrez votre adresse de livraison"
+        android:inputType="text" />
+
+    <!-- Bouton pour confirmer -->
+    <Button
+        android:id="@+id/btnConfirmAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Confirmer" />
+
+</LinearLayout>

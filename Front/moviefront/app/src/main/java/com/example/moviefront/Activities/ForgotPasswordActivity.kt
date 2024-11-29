@@ -30,7 +30,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
             if (email.isNotEmpty()) {
                 val forgotPasswordRequest = ForgotPasswordRequest(email)
 
-                RetrofitInstance.api.forgotPassword(forgotPasswordRequest).enqueue(object : Callback<Void> {
+                RetrofitInstance.apiUser.forgotPassword(forgotPasswordRequest).enqueue(object : Callback<Void> {
                     override fun onResponse(call: Call<Void>, response: Response<Void>) {
                         if (response.isSuccessful) {
                             Toast.makeText(this@ForgotPasswordActivity, "Email sent if account exists", Toast.LENGTH_SHORT).show()

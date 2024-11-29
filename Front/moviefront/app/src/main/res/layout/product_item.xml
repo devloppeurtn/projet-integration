@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="225dp"
-    android:layout_height="280dp"
+    android:layout_height="300dp"
     android:layout_margin="8dp"
     android:background="@drawable/bg"
+
 
     >
 
@@ -28,6 +29,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:singleLine="false"
+        android:ellipsize="none"
+
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="Title"
@@ -38,12 +42,12 @@
         app:layout_constraintTop_toBottomOf="@+id/img" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/Addbtn"
         android:layout_width="28dp"
         android:layout_height="28dp"
-        android:text="+"
-        android:gravity="center"
         android:background="@drawable/plus_btn"
+        android:gravity="center"
+        android:text="+"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
