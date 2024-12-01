@@ -102,14 +102,21 @@ class LoginActivity : AppCompatActivity() {
                         clearRememberMe()
                     }
 
-                    // Redirection vers l'activité principale
-                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                    // Vérification du rôle de l'utilisateur
+                    val intent = if (user?.role.toString() == "ADMIN") {
+                        // Si l'utilisateur est un admin, redirigez vers AdminActivity
+                        Intent(this@LoginActivity, homeadmin::class.java)
+                    } else {
+                        // Si l'utilisateur est un utilisateur classique, redirigez vers UserActivity
+                        Intent(this@LoginActivity, MainActivity::class.java)
+                    }
+
                     intent.putExtra("USER_EMAIL", email)
                     if (user != null) {
-                        intent.putExtra("IS_PREMIUM",user.isPremiumMember)
+                        intent.putExtra("IS_PREMIUM", user.isPremiumMember)
                         Log.e("isp", "rep :${user.isPremiumMember}")
-
                     }
+
                     startActivity(intent)
                     finish() // Ferme l'activité actuelle
                 } else {
@@ -126,6 +133,7 @@ class LoginActivity : AppCompatActivity() {
             }
         })
     }
+
 
     // Fonction pour gérer la visibilité du mot de passe
     private fun togglePasswordVisibility() {

@@ -70,7 +70,7 @@ class Details : AppCompatActivity() {
         val vote = intent.getDoubleExtra("vote_average", 0.0)
         val formattedVote = String.format("%.1f", vote)
         val productionCompanies = intent.getStringArrayListExtra("productionCompanyNames")
-
+Log.e("urlimg","$srcImage")
         // Afficher les informations
         titleView.text = title
         descriptionView.text = description

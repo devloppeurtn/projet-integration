@@ -2,10 +2,12 @@ package com.example.moviefront.Activities
 
 import Movie
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -66,12 +68,25 @@ class whatchList : AppCompatActivity() {
 
 
 
-        val backButton: ImageView = findViewById(R.id.acbtn)
+        val backButton: LinearLayout = findViewById(R.id.acbtn)
 
         // Ajouter un listener de clic
         backButton.setOnClickListener {
             // Fermer l'activité actuelle et revenir à l'activité précédente
-            finish()
+            val intent = Intent(this, MainActivity::class.java)
+           intent.putExtra("USER_EMAIL",userEmail)
+            startActivity(intent)
+
+        }
+        val shopbtn: LinearLayout = findViewById(R.id.shopbtn)
+
+        // Ajouter un listener de clic
+        shopbtn.setOnClickListener {
+            // Fermer l'activité actuelle et revenir à l'activité précédente
+            val intent = Intent(this, ShoppingFragment::class.java)
+            intent.putExtra("USER_EMAIL",userEmail)
+            startActivity(intent)
+
         }
     }
 

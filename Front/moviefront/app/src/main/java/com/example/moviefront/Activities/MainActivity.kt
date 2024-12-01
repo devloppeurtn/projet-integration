@@ -173,7 +173,8 @@ class MainActivity : AppCompatActivity() {
         // Configuration du RecyclerView pour les films
         loadMovies()
 
-        val favButton: ImageView = findViewById(R.id.favbutton)
+        val favButton: LinearLayout = findViewById(R.id.favbutton)
+        val shopbutton: LinearLayout = findViewById(R.id.shopbutton)
 
         // Ajouter un listener de clic
         favButton.setOnClickListener {
@@ -181,6 +182,14 @@ class MainActivity : AppCompatActivity() {
 
             // Créer une intention pour démarrer l'activité Favoris
             val intent = Intent(this, whatchList::class.java)
+            intent.putExtra("USER_EMAIL",userEmail)
+            startActivity(intent)
+        }
+        shopbutton.setOnClickListener {
+            val userEmail : String? = intent.getStringExtra("USER_EMAIL")
+
+            // Créer une intention pour démarrer l'activité Favoris
+            val intent = Intent(this, ShoppingFragment::class.java)
             intent.putExtra("USER_EMAIL",userEmail)
             startActivity(intent)
         }

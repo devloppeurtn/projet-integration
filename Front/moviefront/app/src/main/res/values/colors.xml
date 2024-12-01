@@ -36,4 +36,5 @@
     <color name="gray">#808080</color>
     <!-- Couleurs pour les erreurs -->
     <color name="colorError">#F44336</color>
+    <color name="spinner_item_color">#666666</color> <!-- Exemple de couleur violet -->
 </resources>

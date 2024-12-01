@@ -62,6 +62,14 @@
         android:textColor="#FFFFFF"
         android:textColorHint="#666666"
         android:layout_marginBottom="24dp" />
+    <Spinner
+        android:id="@+id/roleSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_edittext"
+        android:paddingStart="16dp"
+        android:layout_marginBottom="24dp"
+        android:spinnerMode="dropdown" />
 
     <!-- Bouton Register -->
     <Button

@@ -42,7 +42,6 @@ public class UserService {
     public User registerUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setPremiumMember(false); // Assurer que l'utilisateur est non-premium par défaut
-
         return userRepository.save(user);
     }
     public User getUserById(String userId) {

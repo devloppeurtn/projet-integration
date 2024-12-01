@@ -34,7 +34,7 @@ class product_detail : AppCompatActivity() {
 
         // Initialisation des vues
         backButton = findViewById(R.id.backbtn)
-        favoriteButton = findViewById(R.id.favBtn)
+        favoriteButton = findViewById(R.id.panier)
         productImage = findViewById(R.id.img)
         priceText = findViewById(R.id.pricetxt)
         titleText = findViewById(R.id.titletxt)
@@ -46,7 +46,12 @@ class product_detail : AppCompatActivity() {
         descriptionText = findViewById(R.id.description)
         addToCartButton = findViewById(R.id.Addbtn)
         totalPriceText = findViewById(R.id.totalTxt)
+        favoriteButton.setOnClickListener {
+            val intent = Intent(this, CartActivity::class.java)
 
+            startActivity(intent)
+
+        }
         // Récupérer les données de l'intent
         val productId = intent.getStringExtra("product_id") ?: "default_id"
         val productName = intent.getStringExtra("product_name")
@@ -56,6 +61,7 @@ class product_detail : AppCompatActivity() {
 
         // Mettre les données dans les vues
         titleText.text = productName
+        descriptionText.text=productDescription
 
 // Utiliser Glide pour charger l'image à partir de l'URL
         Glide.with(this)

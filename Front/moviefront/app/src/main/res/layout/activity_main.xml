@@ -396,13 +396,13 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/favbutton"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.25"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/favbutton"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_gravity="center"
@@ -420,6 +420,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/shopbutton"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.25"

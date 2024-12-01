@@ -1,0 +1,10 @@
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/textViewRole"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textSize="16sp"
+    android:padding="6dp"
+    android:textColor="@color/spinner_item_color"
+    android:drawableStart="@drawable/ic_role"
+
+    /> <!-- Utiliser une couleur définie dans colors.xml -->

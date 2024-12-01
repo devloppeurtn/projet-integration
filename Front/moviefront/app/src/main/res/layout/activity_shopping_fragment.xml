@@ -61,7 +61,7 @@
                 android:layout_marginTop="16dp">
 
                 <EditText
-                    android:id="@+id/editTextText3"
+                    android:id="@+id/searchInput"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"
@@ -258,6 +258,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/favbutton"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="8dp"
@@ -310,6 +311,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/acbtn"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="8dp"
@@ -322,13 +324,13 @@
                         android:layout_height="24dp"
                         android:layout_gravity="center"
                         android:layout_margin="5dp"
-                        app:srcCompat="@drawable/btn_4"
+                        app:srcCompat="@drawable/home"
                         tools:ignore="ContentDescription,DuplicateIds" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Explorez"
+                        android:text="home"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textSize="12sp"
