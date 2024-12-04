@@ -10,13 +10,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "produits")
 public class Produit {
     @Id
-    private String id; // Correspond à 'id' en Kotlin
-    private String name; // Correspond à 'name' en Kotlin
-    private String description; // Correspond à 'description' en Kotlin
-    private double price; // Correspond à 'price' en Kotlin
-    private String imageResId; // Correspond à 'imageResId' en Kotlin
-    private int quantity; // Correspond à 'quantity' en Kotlin
-
+    private String id; // Identifiant du produit
+    private String name; // Nom du produit
+    private String description; // Description du produit
+    private double price; // Prix du produit
+    private String imageResId; // Image associée au produit
+    private int quantity; // Quantité en stock
 }
 
 

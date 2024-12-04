@@ -2,16 +2,23 @@ package com.example.User_Service.controller;
 
 import com.example.User_Service.dto.ForgotPasswordRequest;
 import com.example.User_Service.dto.LoginRequest;
+import com.example.User_Service.dto.PasswordChangeRequest;
 import com.example.User_Service.dto.ResetPasswordRequest;
 import com.example.User_Service.entity.*;
+import com.example.User_Service.repository.UserRepository;
 import com.example.User_Service.service.EmailService;
 import com.example.User_Service.service.UserService;
+import jakarta.ws.rs.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/users")
@@ -19,6 +26,10 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    @Autowired
+    private UserRepository userRepository;
     @GetMapping("/{id}")
     public ResponseEntity<?> getUserById(@PathVariable("id") String userId) {
         try {
@@ -118,5 +129,46 @@ public class UserController {
             return ResponseEntity.badRequest().body("Failed to remove movie from favorites.");
         }
     }
+    @GetMapping("/by-email/{email}")
+    public User getUserByEmail(@PathVariable String email) {
+        User user = userService.findByEmail(email);
+        if (user == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Utilisateur non trouvé avec l'email : " + email);
+        }
+        return user;
+    }
+    @PutMapping("/by-email/{email}")
+    public ResponseEntity<User> updateUserByEmail(
+            @PathVariable String email,
+            @RequestBody User user) {
+
+        // Appel du service pour mettre à jour l'utilisateur par email
+        User updatedUser = userService.updateUserByEmail(email, user);
+
+        if (updatedUser == null) {
+            // Si l'utilisateur n'est pas trouvé, renvoyer un code 404
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+
+        // Retourner l'utilisateur mis à jour avec un code 200 OK
+        return ResponseEntity.ok(updatedUser);
+    }
+
+    @PutMapping("/update-password")
+    public ResponseEntity<Map<String, String>> updatePassword(@RequestBody PasswordChangeRequest request) {
+        String responseMessage = userService.updatePassword(request.getEmail(), request.getOldPassword(), request.getNewPassword());
+
+        Map<String, String> response = new HashMap<>();
+        if (responseMessage.equals("Mot de passe modifié avec succès")) {
+            response.put("message", responseMessage);
+            return ResponseEntity.ok(response);  // Succès
+        } else {
+            response.put("error", responseMessage);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);  // Erreur
+        }
+    }
+
+
+
 }
 

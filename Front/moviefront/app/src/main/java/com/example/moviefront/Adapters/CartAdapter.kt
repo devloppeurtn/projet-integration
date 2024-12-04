@@ -10,7 +10,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.moviefront.Domian.CartItem
-import com.example.moviefront.Domian.Product
 import com.example.moviefront.R
 
 class CartAdapter(
@@ -33,7 +32,7 @@ class CartAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.cartproduct_item, parent, false)
+            .inflate(R.layout.cart_productes_item, parent, false)
         return CartViewHolder(view)
     }
 

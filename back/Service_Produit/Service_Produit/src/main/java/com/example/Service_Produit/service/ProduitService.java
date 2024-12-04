@@ -1,12 +1,8 @@
 package com.example.Service_Produit.service;
 
-
-
-
-
 import com.example.Service_Produit.entity.Produit;
-import com.example.Service_Produit.exception.ProduitNotFoundException;
 import com.example.Service_Produit.repository.ProduitRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,49 +20,37 @@ public class ProduitService {
         return produitRepository.save(produit);
     }
 
-    public Produit obtenirProduitParId(String id) {
-        return produitRepository.findById(id)
-                .orElseThrow(() -> new ProduitNotFoundException("Produit avec ID " + id + " introuvable"));
-    }
-
-
-    public List<Produit> obtenirTousProduits() {
+    // Obtenir tous les produits
+    public List<Produit> getAllProduits() {
         return produitRepository.findAll();
     }
 
-    public Produit modifierProduit(String id, Produit produitMisAJour) {
-        // Récupérer le produit existant
-        Produit produitExistant = produitRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Produit avec ID " + id + " introuvable"));
-
-        // Mettre à jour les informations du produit
-        produitExistant.setName(produitMisAJour.getName());
-        produitExistant.setDescription(produitMisAJour.getDescription());
-        produitExistant.setPrice(produitMisAJour.getPrice());
-        produitExistant.setQuantity(produitMisAJour.getQuantity());  // N'oubliez pas de renommer "quantiteEnStock" en "quantity" si vous avez changé le nom du champ
-
-        // Sauvegarder et retourner le produit mis à jour
-        return produitRepository.save(produitExistant);
+    // Obtenir un produit par ID
+    public Produit getProduitById(String id) {
+        return produitRepository.findById(id).orElse(null);
     }
 
-
-    public void supprimerProduit(String id) {
-        Produit produit = obtenirProduitParId(id);
-        produitRepository.delete(produit);
+    // Ajouter un nouveau produit
+    public Produit createProduit(Produit produit) {
+        return produitRepository.save(produit);
     }
-    public Produit mettreAJourStock(String produitId, int nouvelleQuantite) {
-        // Récupérer le produit par ID
-        Produit produit = produitRepository.findById(produitId)
-                .orElseThrow(() -> new IllegalArgumentException("Produit non trouvé"));
 
-        // Mettre à jour la quantité en stock
-        produit.setQuantity(nouvelleQuantite);
+    // Mettre à jour un produit existant
+    public Produit updateProduit(String id, Produit produitDetails) {
+        Produit produit = produitRepository.findById(id).orElse(null);
+        if (produit != null) {
+            produit.setName(produitDetails.getName());
+            produit.setDescription(produitDetails.getDescription());
+            produit.setPrice(produitDetails.getPrice());
+            produit.setImageResId(produitDetails.getImageResId());
+            produit.setQuantity(produitDetails.getQuantity());
+            return produitRepository.save(produit);
+        }
+        return null;
+    }
 
-        // Sauvegarder les modifications dans la base de données
-        produitRepository.save(produit);
-        return produit;
+    // Supprimer un produit
+    public void deleteProduit(String id) {
+        produitRepository.deleteById(id);
     }
 }
-
-
-

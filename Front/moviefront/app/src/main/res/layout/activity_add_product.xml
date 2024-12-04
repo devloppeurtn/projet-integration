@@ -1,0 +1,71 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.AddProductActivity">
+
+    <!-- EditText pour le nom du produit -->
+    <EditText
+        android:id="@+id/etNomProduit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Nom du produit"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- EditText pour la description du produit -->
+    <EditText
+        android:id="@+id/etDescriptionProduit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Description"
+        app:layout_constraintTop_toBottomOf="@id/etNomProduit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- EditText pour le prix du produit -->
+    <EditText
+        android:id="@+id/etPrixProduit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Prix"
+        android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf="@id/etDescriptionProduit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- EditText pour la quantité du produit -->
+    <EditText
+        android:id="@+id/etQuantiteProduit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Quantité"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@id/etPrixProduit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- EditText pour l'image du produit (URL ou fichier) -->
+    <EditText
+        android:id="@+id/etImageProduit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="URL de l'image"
+        app:layout_constraintTop_toBottomOf="@id/etQuantiteProduit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Bouton pour enregistrer le produit -->
+    <Button
+        android:id="@+id/btnEnregistrerProduit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enregistrer"
+        app:layout_constraintTop_toBottomOf="@id/etImageProduit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

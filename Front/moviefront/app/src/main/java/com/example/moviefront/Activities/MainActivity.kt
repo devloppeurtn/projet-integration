@@ -175,6 +175,7 @@ class MainActivity : AppCompatActivity() {
 
         val favButton: LinearLayout = findViewById(R.id.favbutton)
         val shopbutton: LinearLayout = findViewById(R.id.shopbutton)
+        val profilebutton: LinearLayout = findViewById(R.id.profile)
 
         // Ajouter un listener de clic
         favButton.setOnClickListener {
@@ -182,6 +183,14 @@ class MainActivity : AppCompatActivity() {
 
             // Créer une intention pour démarrer l'activité Favoris
             val intent = Intent(this, whatchList::class.java)
+            intent.putExtra("USER_EMAIL",userEmail)
+            startActivity(intent)
+        }
+        profilebutton.setOnClickListener {
+            val userEmail : String? = intent.getStringExtra("USER_EMAIL")
+
+            // Créer une intention pour démarrer l'activité Favoris
+            val intent = Intent(this, ProfileActivity::class.java)
             intent.putExtra("USER_EMAIL",userEmail)
             startActivity(intent)
         }

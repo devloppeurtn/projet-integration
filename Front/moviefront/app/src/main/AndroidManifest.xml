@@ -2,12 +2,25 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Permissions nécessaires -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- WRITE_EXTERNAL_STORAGE est obsolète pour les API 30+ -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:targetApi="28" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -23,17 +36,17 @@
         android:theme="@style/Theme.Moviefront"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <!-- Activités de l'application -->
         <activity
             android:name=".Activities.passercommande"
             android:exported="false" />
         <activity
             android:name=".Activities.homeadmin"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".Activities.deletemovie"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".Activities.Modify"
             android:exported="true" />
@@ -56,7 +69,8 @@
             android:name=".Activities.VideoActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:exported="false"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            tools:ignore="DiscouragedApi" />
         <activity
             android:name=".Activities.Details"
             android:exported="true" />
@@ -65,16 +79,15 @@
             android:exported="true" />
         <activity
             android:name=".Activities.IntroActivity"
-            android:exported="true" >  <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Activities.ShoppingFragment"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".Activities.ForgotPasswordActivity"
             android:exported="true" />
@@ -89,7 +102,25 @@
             android:exported="true" />
         <activity
             android:name=".Activities.CartActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
+
+        <!-- Activité principale (lancée au démarrage) -->
+        <activity
+            android:name=".Activities.gerer_produit"
+            android:exported="true">
+
+        </activity>
+
+        <activity
+            android:name=".Activities.AddProductActivity"
+            android:exported="true" />
+        <activity android:name=".Activities.ProfileActivity"
+            android:exported="true">
+
+        </activity>
+        <activity android:name=".Activities.ChangePasswordActivity">
+
+        </activity>
     </application>
 
 </manifest>

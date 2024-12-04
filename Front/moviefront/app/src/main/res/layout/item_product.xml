@@ -1,0 +1,73 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- ImageView pour afficher l'image du produit -->
+        <ImageView
+            android:id="@+id/ivImageProduit"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            />
+        <!-- Nom du produit -->
+        <TextView
+            android:id="@+id/tvNomProduit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nom"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- Description du produit -->
+        <TextView
+            android:id="@+id/tvDescriptionProduit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textSize="14sp" />
+
+        <!-- Prix du produit -->
+        <TextView
+            android:id="@+id/tvPrixProduit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prix"
+            android:textSize="14sp" />
+
+        <!-- Quantité du produit -->
+        <TextView
+            android:id="@+id/tvQuantiteProduit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quantité"
+            android:textSize="14sp" />
+
+        <!-- Boutons Modifier et Supprimer -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <Button
+                android:id="@+id/btnModifierProduit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Modifier" />
+
+            <Button
+                android:id="@+id/btnSupprimerProduit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Supprimer" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

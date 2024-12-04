@@ -1,3 +1,4 @@
 package com.example.moviefront.Domian
 
-data class ApiResponse()
+data class ApiResponse(    val message: String
+)

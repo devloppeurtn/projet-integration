@@ -5,6 +5,7 @@ import com.example.User_Service.entity.User;
 import com.example.User_Service.entity.film;
 import com.example.User_Service.repository.PasswordResetTokenRepository;
 import com.example.User_Service.repository.UserRepository;
+import jakarta.ws.rs.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -210,6 +211,39 @@ public class UserService {
         }
         return false; // User not found or movie ID not in the list
     }
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+    public User updateUserByEmail(String email, User user) {
+        // Chercher l'utilisateur par son email
+        User existingUser = userRepository.findByEmail(email);
+
+        if (existingUser == null) {
+            return null;
+        }
+
+        // Mettre à jour les informations de l'utilisateur
+        existingUser.setName(user.getName());
+        existingUser.setPassword(user.getPassword());
+        existingUser.setPremiumMember(user.isPremiumMember());
+
+        // Sauvegarder les modifications dans la base de données
+        return userRepository.save(existingUser);
+    }
+    public String updatePassword(String email, String oldPassword, String newPassword) {
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            return "Utilisateur introuvable";  // Utilisateur non trouvé
+        }
+        if (!passwordEncoder.matches(oldPassword, user.getPassword())) {
+            return "Ancien mot de passe incorrect";  // Ancien mot de passe incorrect
+        }
+
+        // Mise à jour du mot de passe
+        user.setPassword(passwordEncoder.encode(newPassword));
+        userRepository.save(user);
+        return "Mot de passe modifié avec succès";  // Succès
+    }
+
 
 }
-
